@@ -122,4 +122,4 @@ def main(**kwargs):
 
         ratioPercent = int(raw_input("What percentage match? 0-100 (100 means exact match)"))
 
-main(sys.argv)
+#main(sys.argv)
