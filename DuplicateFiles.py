@@ -117,6 +117,7 @@ if __name__ == '__main__':
             print('%s is not a valid path, please verify' % i)
             sys.exit()
 
+    # Print results by passing dups
     printResults(dups)
     if deleteFilesBool == True:
         deleteDups(dups)
