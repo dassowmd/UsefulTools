@@ -5,6 +5,7 @@ import logging
 import sys
 import re
 import time
+import datetime
 
 SPEEDTEST_CMD = 'C:\Anaconda2\Lib\site-packages\speedtest_cli.py'
 sleepTime = 1500
@@ -73,7 +74,7 @@ def get_speedtest_results():
             next
     #print(ISP, ping, download, upload)
     if all((ISP, ping, download, upload)): # if all values were parsed
-        print (ISP, ping, download, upload)
+        print (str(datetime.datetime.now()), ISP, ping, download, upload)
         return ISP, ping, download, upload
     else:
         raise ValueError('TEST FAILED')
