@@ -26,6 +26,7 @@ def main():
             ISP, ping, download, upload = get_speedtest_results()
         except ValueError as err:
             logging.info("%s %s", computerName, err)
+            next
         else:
             logging.info("%s %s %s %s %s", ISP, computerName, ping, download, upload)
         time.sleep(sleepTime)
@@ -118,4 +119,7 @@ def find_Ping_Regex(txt):
         return None
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        next 
