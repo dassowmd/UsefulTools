@@ -5,14 +5,18 @@ from win32com.client import Dispatch
 import send2trash
 
 def hashfile(path, blocksize = 65536):
-    afile = open(path, 'rb')
-    hasher = hashlib.md5()
-    buf = afile.read(blocksize)
-    while len(buf) > 0:
-        hasher.update(buf)
-        buf= afile.read(blocksize)
-    afile.close()
-    return hasher.hexdigest()
+    try:
+        afile = open(path, 'rb')
+        hasher = hashlib.md5()
+        buf = afile.read(blocksize)
+        while len(buf) > 0:
+            hasher.update(buf)
+            buf= afile.read(blocksize)
+        afile.close()
+        return hasher.hexdigest()
+    except:
+        print("Unable to hash " + path)
+
 
 def findDup(parentFolder):
     #Dups in format {hash:[names]}
@@ -27,7 +31,9 @@ def findDup(parentFolder):
             file_hash = hashfile(path)
             #Add or append the file path
             if file_hash in dups:
-                dups[file_hash].append(path)
+                # Only append if user wants to track similar files within same list
+                if IgnoreSameListComparisons == 'false':
+                    dups[file_hash].append(path)
             else:
                 dups[file_hash] = [path]
     return dups
@@ -92,6 +98,7 @@ if __name__ == '__main__':
     # If not args are passed, request them from user
     if len(sys.argv) <=1:
         tempArgs =  raw_input("Please enter the directory paths you would like to compare. Please separate by a comma\n").split(',')
+        IgnoreSameListComparisons = raw_input("Ignore duplicate files within the same list? True/False\n").lower()
         for a in tempArgs:
             a = a.replace("'", "")
             a = a.replace('"', "")
