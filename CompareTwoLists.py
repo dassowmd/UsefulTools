@@ -3,6 +3,7 @@ import sys
 import csv
 import os
 import argparse
+from tqdm import tqdm
 
 #Test with csv load
 def LoadCSV(filepath):
@@ -35,47 +36,64 @@ def saveResults(matchList, SaveFileLocation):
         except Exception as e:
             print('\nFile' + SaveFileLocation + ' in use, please close and hit "Enter"\n')
             raw_input()
-            saveResults(item, matchList, SaveFileLocation)
+            saveResults(matchList, SaveFileLocation)
     with open(SaveFileLocation, 'wb') as csvFile:
         writer = csv.writer(csvFile)
         if len(matchList) > 0:
-            writer.writerow(['Item', 'Matched Item', 'Full Match Percent', 'Partial Match Percent', 'Token Match Percent'])
+            writer.writerow(['Item', 'Matched Item', 'Full Match Percent', 'Partial Match Percent', 'Token Match Percent', 'Match Sum'])
             for i in matchList:
-                writer.writerow([i[0], i[1], i[2], i[3], i[4]])
+                writer.writerow([i[0], i[1], i[2], i[3], i[4], i[5]])
 
-def getMatches(List1, List2, ignoreCase, fullOrPartialOrToken, ratioPercent, SaveFileLocation, matchLimit):
+def getMatches(List1, List2, ignoreCase, fullOrPartialOrToken, ratioPercent, SaveFileLocation, matchLimit, sameList=False):
     matchList = []
-    for item in List1:
+    for item in tqdm(List1):
         tempMatchList = []
         word1 = str(item).strip()
-        sys.stdout.write('.')
+        # sys.stdout.write('.')
         for word in List2:
-            rFull = 0
-            rPartial = 0
-            rToken = 0
             word2 = str(word).strip()
             if ignoreCase == "yes":
                 word1 = word1.lower()
                 word2 = word2.lower()
-            if fullOrPartialOrToken == 'full':
-                rFull = fuzz.ratio(word1,word2)
-            elif fullOrPartialOrToken == 'partial':
-                rPartial = fuzz.partial_ratio(word1,word2)
-            elif fullOrPartialOrToken == 'token':
-                rToken = fuzz.token_set_ratio(word1,word2)
-            elif fullOrPartialOrToken == 'all':
-                rFull = fuzz.ratio(word1,word2)
-                rPartial = fuzz.partial_ratio(word1,word2)
-                rToken = fuzz.token_set_ratio(word1,word2)
+            if(sameList):
+                if word1 != word2:
+                    tempMatchList = comPareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2)
             else:
-                raise("\nI don't recognize that command")
+                tempMatchList = comPareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2)
 
-            if rFull > int(ratioPercent) or rPartial > int(ratioPercent) or rToken > int(ratioPercent):
-                tempMatchList.append([word1, word2, rFull, rPartial, rToken])
         # Compare length of list to match limit to account for when comparing a list to itself
         if len(tempMatchList) > matchLimit:
             matchList.extend(tempMatchList)
+
+    if raw_input("\nWould you like the data sorted by the sum of the match percentages? (Yes/No)\n").lower() == "yes":
+        # Order matchList
+        def getKey(item):
+            return item[5]
+        matchList = sorted(matchList, key=getKey, reverse=True)
     return matchList
+
+
+def comPareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2):
+    rFull = 0
+    rPartial = 0
+    rToken = 0
+    if fullOrPartialOrToken == 'full':
+        rFull = fuzz.ratio(word1, word2)
+    elif fullOrPartialOrToken == 'partial':
+        rPartial = fuzz.partial_ratio(word1, word2)
+    elif fullOrPartialOrToken == 'token':
+        rToken = fuzz.token_set_ratio(word1, word2)
+    elif fullOrPartialOrToken == 'all':
+        rFull = fuzz.ratio(word1, word2)
+        rPartial = fuzz.partial_ratio(word1, word2)
+        rToken = fuzz.token_set_ratio(word1, word2)
+        rSum = rFull + rPartial + rToken
+    else:
+        raise ("\nI don't recognize that command")
+    if rFull > int(ratioPercent) or rPartial > int(ratioPercent) or rToken > int(ratioPercent):
+        tempMatchList.append([word1, word2, rFull, rPartial, rToken, rSum])
+    return tempMatchList
+
 
 def main(argDict):
     # loadType = 'csv'
@@ -89,7 +107,7 @@ def main(argDict):
     List2 = []
 
     if argDict['loadType'] == None:
-        loadType = raw_input('Would you like to load from CSV or manual input? (Import "CSV" or "Manual")\n\n').lower()
+        argDict['loadType'] = raw_input('Would you like to load from CSV or manual input? (Import "CSV" or "Manual")\n\n').lower()
     if argDict['loadType'] == "csv":
         if argDict['fileLocation_List1'] == None:
             argDict['fileLocation_List1'] = raw_input('Please enter the absolute file path of the 1st file you would like to load\n')
@@ -117,6 +135,17 @@ def main(argDict):
     if argDict['output'] == None:
         argDict['output'] = raw_input('How would you like to output the results? Print to console or Save to file (Print or Save)\n').lower()
 
+    if argDict['output'] == 'print':
+        outputMethod = printResults
+        argDict['saveFileLocation'] = None
+    elif (argDict['output'] == 'save'):
+        outputMethod = saveResults
+        if argDict['saveFileLocation'] == None:
+            argDict['saveFileLocation'] = raw_input(
+                'Please give the location of the csv file (including the name of the file) that you would like to save\n').replace(
+                '"', '')
+    else:
+        print "Did not recognize output command"
     if argDict['matchLimit'] == None:
         matchLimit = 0
 
@@ -124,21 +153,13 @@ def main(argDict):
         argDict['ratioPercent'] = int(raw_input("What percentage match? 0-100 (100 means exact match)\n\n"))
 
     # Reset match limit to only return results greater than 1 when the list is being compared to itself
+    sameList = False
     if List1 == List2:
+        sameList = True
         print('The lists are the same. Will return results where matches are greater than 1')
         argDict['matchLimit'] = 1
 
-    if argDict['output'] == 'print':
-        outputMethod = printResults
-        argDict['saveFileLocation'] = None
-    elif(argDict['output'] == 'save'):
-        outputMethod = saveResults
-        if argDict['saveFileLocation'] == None:
-            argDict['saveFileLocation'] = raw_input('Please give the location of the csv file (including the name of the file) that you would like to save\n').replace('"', '')
-    else:
-        print "Did not recognize output command"
-
-    matchList = getMatches(List1, List2, argDict['ignoreCase'], argDict['fullOrPartialOrToken'], argDict['ratioPercent'], argDict['saveFileLocation'], argDict['matchLimit'])
+    matchList = getMatches(List1, List2, argDict['ignoreCase'], argDict['fullOrPartialOrToken'], argDict['ratioPercent'], argDict['saveFileLocation'], argDict['matchLimit'], sameList=sameList)
 
     if len(matchList) > 0:
         outputMethod(matchList, argDict['saveFileLocation'])
