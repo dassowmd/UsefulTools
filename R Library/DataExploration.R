@@ -117,3 +117,18 @@ copy.table <- function(obj, size = 4096) {
   close(f)
 }
 
+# Returns the number of unique values in a column 
+UniqueValues = function(data, col)
+{
+  # print(paste0("There are ", length(unique(data[[col]]))), " unique values in ", col)
+  if(length(unique(data[[col]])) < 100000){
+    results = count(data, col)
+    print("Results gathered")
+    sorted = results[order(-results[2]), ]
+    print("Results sorted")
+    return(sorted)
+  }else{
+    print("There are more than 100k unique values in this field")
+    return("There are more than 100k unique values in this field")
+  }
+}

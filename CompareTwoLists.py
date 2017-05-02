@@ -4,6 +4,7 @@ import csv
 import os
 import argparse
 from tqdm import tqdm
+import pandas as pd
 
 #Test with csv load
 def LoadCSV(filepath):
@@ -37,15 +38,16 @@ def saveResults(matchList, SaveFileLocation):
             print('\nFile' + SaveFileLocation + ' in use, please close and hit "Enter"\n')
             raw_input()
             saveResults(matchList, SaveFileLocation)
-    with open(SaveFileLocation, 'wb') as csvFile:
-        writer = csv.writer(csvFile)
-        if len(matchList) > 0:
-            writer.writerow(['Item', 'Matched Item', 'Full Match Percent', 'Partial Match Percent', 'Token Match Percent', 'Match Sum'])
-            for i in matchList:
-                writer.writerow([i[0], i[1], i[2], i[3], i[4], i[5]])
+    matchList.to_csv(SaveFileLocation, header=True, columns=['text_Key', 'word1', 'word2', 'rFull', 'rPartial', 'rToken', 'rSum'], index=False)
+    # with open(SaveFileLocation, 'wb') as csvFile:
+    #     writer = csv.writer(csvFile)
+    #     if len(matchList) > 0:
+    #         writer.writerow(['Item', 'Matched Item', 'Full Match Percent', 'Partial Match Percent', 'Token Match Percent', 'Match Sum'])
+    #         for i in matchList:
+    #             writer.writerow([i[0], i[1], i[2], i[3], i[4], i[5]])
 
 def getMatches(List1, List2, ignoreCase, fullOrPartialOrToken, ratioPercent, SaveFileLocation, matchLimit, sameList=False):
-    matchList = []
+    matchList = pd.DataFrame()
     for item in tqdm(List1):
         tempMatchList = []
         word1 = str(item).strip()
@@ -57,26 +59,60 @@ def getMatches(List1, List2, ignoreCase, fullOrPartialOrToken, ratioPercent, Sav
                 word2 = word2.lower()
             if(sameList):
                 if word1 != word2:
-                    tempMatchList = comPareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2)
+                    tempMatchList = compareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2)
             else:
-                tempMatchList = comPareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2)
+                tempMatchList = compareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2)
 
         # Compare length of list to match limit to account for when comparing a list to itself
+        # print tempMatchList
         if len(tempMatchList) > matchLimit:
-            matchList.extend(tempMatchList)
+            #Adding a my_list because directly appending to the matchList df was really slow
+            my_list = []
+            # print tempMatchList
+            for i in tempMatchList:
+                if len(matchList) == 0:
+                    matchList = matchList.append(i, ignore_index=True)
+                else:
+                    # if not any(d['text_Key'] == i['text_Key'] for d in matchList.iterrows()):
+                    if not (matchList['text_Key'] == i['text_Key']).any():
+                        my_list.append(i)
+                # print i
+                # print my_list
+                # raw_input('Press Enter')
+                # # print len(matchList)
+                # if len(matchList) == 0:
+                #     matchList = matchList.append(i, ignore_index=True)
+                # if any(matchList.text_Key == i['text_Key']):
+                #     pass
+                # else:
+                #     matchList = matchList.append(i, ignore_index=True)
+                # raw_input('Press Enter to continue')
+                my_list_DataFrame = pd.DataFrame(my_list)
+                # print l_DataFrame.head()
+            matchList = matchList.append(my_list_DataFrame)
+        # print matchList.head()
 
     if raw_input("\nWould you like the data sorted by the sum of the match percentages? (Yes/No)\n").lower() == "yes":
         # Order matchList
         def getKey(item):
             return item[5]
-        matchList = sorted(matchList, key=getKey, reverse=True)
+        # matchList = sorted(matchList, key=getKey, reverse=True)
+        matchList = matchList.sort_values(by=['rSum'], ascending=0)
     return matchList
 
 
-def comPareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2):
+def compareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, word1, word2):
     rFull = 0
     rPartial = 0
     rToken = 0
+
+    #Create a key to be able to find duplicate comparisons and remove them in the matchList
+    text_Key = ''
+    if word1 >= word2:
+        text_Key = word1 + word2
+    else:
+        text_Key = word2 + word1
+
     if fullOrPartialOrToken == 'full':
         rFull = fuzz.ratio(word1, word2)
     elif fullOrPartialOrToken == 'partial':
@@ -91,7 +127,7 @@ def comPareWords(fullOrPartialOrToken, ignoreCase, ratioPercent, tempMatchList, 
     else:
         raise ("\nI don't recognize that command")
     if rFull > int(ratioPercent) or rPartial > int(ratioPercent) or rToken > int(ratioPercent):
-        tempMatchList.append([word1, word2, rFull, rPartial, rToken, rSum])
+        tempMatchList.append({'text_Key':text_Key, 'word1':word1, 'word2':word2, 'rFull':rFull, 'rPartial':rPartial, 'rToken':rToken, 'rSum':rSum})
     return tempMatchList
 
 
