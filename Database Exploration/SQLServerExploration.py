@@ -4,6 +4,7 @@ import pyodbc
 import progressbar
 from tqdm import tqdm
 from time import sleep
+from tabulate import tabulate
 
 # Parameters
 server = raw_input('What server would you like to connect to?\n')
@@ -39,7 +40,7 @@ def getTableInfo():
 
 def getColumnInfo_System():
     sql = """
-    SELECT  @@Servername AS ServerName , DB_NAME() AS DBName , isc.TABLE_Schema, isc.TABLE_NAME, isc.COLUMN_NAME, Data_Type , Numeric_Precision AS Prec , Numeric_Scale AS Scale , Character_Maximum_Length AS [Length] , COUNT(*) AS COUNT
+    SELECT  @@Servername AS ServerName , DB_NAME() AS DBName , isc.TABLE_Schema, isc.TABLE_NAME, isc.COLUMN_NAME, Data_Type , Numeric_Precision AS Prec , Numeric_Scale AS Scale , Character_Maximum_Length AS [Length]
     FROM    information_schema.columns isc
             INNER JOIN information_schema.tables ist
                    ON isc.table_name = ist.table_name
@@ -66,113 +67,130 @@ def getColumnInfo_System():
 
 
 def getUsageData(dataframe):
-    cols = []
-    for key in dataframe.keys():
-        cols.append(key)
-    cols.append("Count_Not_Null")
-    cols.append("Count_Null")
-    dfUsageData = pd.DataFrame(columns=cols)
-    # print dfUsageData
-    # raw_input()
-    # Progress Bar
-    bar = progressbar.ProgressBar(maxval=len(dataframe), widgets=[progressbar.Percentage(), progressbar.Bar(marker=progressbar.AnimatedMarker())])
-    bar.start()
-    # for i in range(0,len(dataframe)):
-    for i in range(0,len(dataframe)):
-        row = dataframe.iloc[[i]]
+    dfUsageData_List = []
+    for row in tqdm(dataframe.iterrows(), bar_format='percentage'):
+        row = dict(row[1])
+        # TODO Need to solve the data types issues before this will work and not error out
+
+        #Get Total Count
+        ct = getCount(str(row["DBName"]),str(row["TABLE_Schema"]),str(row["TABLE_NAME"]), str(row["COLUMN_NAME"]), str(row["Data_Type"]))
+        row['Count_Total'] = ct
 
         #Get Count of Not Nulls
-        ctNOTNull = getCountofFieldNotNull(str(row["DBName"].values[0]),str(row["TABLE_Schema"].values[0]),str(row["TABLE_NAME"].values[0]), str(row["COLUMN_NAME"].values[0]), str(row["Data_Type"].values[0]))
-        tempSeries = pd.Series(ctNOTNull, name = 'Count_Not_Null', index=[i])
-        tempRow = pd.concat([row, tempSeries], axis = 1)
+        ctNOTNull = getCountofFieldNotNull(str(row["DBName"]),str(row["TABLE_Schema"]),str(row["TABLE_NAME"]), str(row["COLUMN_NAME"]), str(row["Data_Type"]))
+        row['Count_Not_Null'] = ctNOTNull
 
         #Get Count of Not Nulls and add to
-        ctNull = getCountofFieldNull(str(row["DBName"].values[0]),str(row["TABLE_Schema"].values[0]),str(row["TABLE_NAME"].values[0]), str(row["COLUMN_NAME"].values[0]), str(row["Data_Type"].values[0]))
-        tempSeries = pd.Series(ctNull, name = 'Count_Null', index=[i])
-        tempRow = pd.concat([tempRow, tempSeries], axis = 1)
+        ctNull = getCountofFieldNull(str(row["DBName"]),str(row["TABLE_Schema"]),str(row["TABLE_NAME"]), str(row["COLUMN_NAME"]), str(row["Data_Type"]))
+        row['Count_Null'] = ctNull
 
-        # Add tempRow to output dfUsageData dataframe
-        dfUsageData = dfUsageData.append(tempRow)
+        # Add row to output dfUsageData list
+        dfUsageData_List.append(row)
 
-        bar.update(i)
 
-    bar.finish()
+        # bar.update(i)
 
+    # bar.finish()
+    dfUsageData = pd.DataFrame(dfUsageData_List)
     return dfUsageData
+
+def getCount(db, schema, table, columnName, dataType):
+    try:
+        sql = """SELECT COUNT(*) as Count
+            FROM """ +"[" + schema + "].[" + table + "]"
+        ct = pd.read_sql(sql, conn)
+        return ct['Count'][0]
+
+    except Exception as e:
+        print e
+        return None
 
 
 def getCountofFieldNotNull(db, schema, table, columnName, dataType):
-    sql = ""
-    # varchar, nvarchar
-    if dataType == "varchar" or dataType == "nvarchar":
-        sql = """SELECT COUNT(*)
-            FROM """ +"[" + schema + "].[" + table + "]" + """
-            WHERE """ + "[" + columnName + "]" + """ IS NOT NULL AND """ + "[" + columnName + "]" + """<> ''"""
+    try:
+        sql = ""
+        # varchar, nvarchar
+        if dataType == "varchar" or dataType == "nvarchar":
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NOT NULL AND """ + "[" + columnName + "]" + """<> ''"""
 
-    # int or decimal or money or bigint
-    elif dataType == "int" or dataType == "decimal" or dataType == "money" or dataType == "bigint":
-        sql = """SELECT COUNT(*)
-            FROM """ +"[" + schema + "].[" + table + "]" + """
-            WHERE """ + "[" + columnName + "]" + """ IS NOT NULL"""
+        # int or decimal or money or bigint
+        elif dataType == "int" or dataType == "tinyint" or dataType == "decimal" or dataType == "money" or dataType == "bigint" or dataType == "float" or dataType == "smallint":
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NOT NULL"""
 
-    # text
-    elif dataType == "text":
-        sql = """SELECT COUNT(*)
-            FROM """ +"[" + schema + "].[" + table + "]" + """
-            WHERE """ + "[" + columnName + "]" + """ IS NOT NULL"""
+        # text
+        elif dataType == "text" or dataType == 'char' or dataType == 'nchar':
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NOT NULL"""
 
-    # datetime
-    elif dataType == "datetime":
-        sql = """SELECT COUNT(*)
-            FROM """ +"[" + schema + "].[" + table + "]" + """
-            WHERE """ + "[" + columnName + "]" + """ IS NOT NULL AND """ + "[" + columnName + "]" + """<> ''"""
+        # datetime
+        elif dataType == "datetime" or dataType == "smalldatetime" or dataType == "date":
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NOT NULL AND """ + "[" + columnName + "]" + """<> ''"""
 
-    else:
+        else:
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NOT NULL"""
+        ct = pd.read_sql(sql, conn)
+        return ct['Count'][0]
+    except Exception as e:
         error = "Data Type " + str(dataType) + " Not Recognized"
         print(error)
-
-    ct = pd.read_sql(sql, conn)
-    return ct
+        print e
+        return None
 
 
 def getCountofFieldNull(db, schema, table, columnName, dataType):
-    sql = ""
-    ## Handle different variable types for Null/Blank counting
-    # varchar, nvarchar
-    if dataType == "varchar" or dataType == "nvarchar":
-        sql = """SELECT COUNT(*)
-            FROM """ +"[" + schema + "].[" + table + "]" + """
-            WHERE """ + "[" + columnName + "]" + """ IS NULL OR """ + "[" + columnName + "]" + """ = ''"""
+    try:
+        sql = ""
+        ## Handle different variable types for Null/Blank counting
+        # varchar, nvarchar
+        if dataType == "varchar" or dataType == "nvarchar":
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NULL OR """ + "[" + columnName + "]" + """ = ''"""
 
-    # int or decimal or money or bigint
-    elif dataType == "int" or dataType == "decimal" or dataType == "money" or dataType == "bigint":
-        sql = """SELECT COUNT(*)
-            FROM """ +"[" + schema + "].[" + table + "]" + """
-            WHERE """ + "[" + columnName + "]" + """ IS NULL"""
+        # int or decimal or money or bigint
+        elif dataType == "int" or dataType == "tinyint" or dataType == "decimal" or dataType == "money" or dataType == "bigint" or dataType == "float" or dataType == "smallint":
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NULL"""
 
-    # text
-    elif dataType == "text":
-        sql = """SELECT COUNT(*)
-            FROM """ +"[" + schema + "].[" + table + "]" + """
-            WHERE """ + "[" + columnName + "]" + """ IS NULL"""
+        # text
+        elif dataType == "text" or dataType == 'char':
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NULL"""
 
-    # datetime
-    elif dataType == "datetime":
-        sql = """SELECT COUNT(*)
-            FROM """ +"[" + schema + "].[" + table + "]" + """
-            WHERE """ + "[" + columnName + "]" + """ IS NULL OR """ + "[" + columnName + "]" + """ = ''"""
-    else:
+        # datetime
+        elif dataType == "datetime" or dataType == "smalldatetime" or dataType == "date":
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NULL OR """ + "[" + columnName + "]" + """ = ''"""
+        else:
+            sql = """SELECT COUNT(*) as Count
+                FROM """ +"[" + schema + "].[" + table + "]" + """
+                WHERE """ + "[" + columnName + "]" + """ IS NULL"""
+
+        ct = pd.read_sql(sql, conn)
+        return ct['Count'][0]
+    except Exception as e:
+        print e
         error = "Data Type " + str(dataType) + " Not Recognized"
-        raise(error)
-
-    ct = pd.read_sql(sql, conn)
-    return ct
+        print(error)
+        return None
 
 tables = getTableInfo()
 tables.to_csv('C:\Users\u672901\Desktop\\' + server + '_' + db + '_Table Info.csv')
 
 colData = getColumnInfo_System()
-usageData = getUsageData(colData)
-usageData.to_csv('C:\Users\u672901\Desktop\\' + server + '_' + db + '_Usage Info.csv')
+colData = getUsageData(colData)
+colData.to_csv('C:\Users\u672901\Desktop\\' + server + '_' + db + '_Usage Info.csv')
 
 # dfColumns.to_csv('C:\Users\u672901\Desktop\TestExport.csv')

@@ -5,6 +5,7 @@ import os
 import argparse
 from tqdm import tqdm
 import pandas as pd
+from tabulate import tabulate
 
 #Test with csv load
 def LoadCSV(filepath):
@@ -23,11 +24,10 @@ def LoadManual(string):
     return l
 
 # fileLocation is intentionally not being used. Just wanted a quick hack to be able to call it after assigning it to the outputMethod (needed 3 params to match the same method)
-def printResults(matchList, SaveFileLocation):
+def printResults(matchList, SaveFileLocation = None):
     if len(matchList) > 0:
         # print('\n' + 'List for ' + item)
-        for i in matchList:
-            print str(i[0]) + " | " + str(i[1]) + " | " +    str(i[2]) + " | " + str(i[3]) + " | " + str(i[4])
+        print tabulate(pd.DataFrame(matchList), headers='keys', tablefmt='psql')
         raw_input("Press Enter go to next")
 
 def saveResults(matchList, SaveFileLocation):
