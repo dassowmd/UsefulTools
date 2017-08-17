@@ -4,8 +4,8 @@ from datetime import datetime
 def prepare_email(subject, body, start_time):
 
     # Fill these in with the appropriate info...
-    fromaddr='matthew.dassow@footlocker.com'
-    toaddr=['matthew.dassow@footlocker.com', 'dassowmd@gmail.com']
+    fromaddr='Insert_FROM_Email_Address_Here.com'
+    toaddr=['Insert_To_Email_Address_Here.com', 'Insert_To_Email_Address_Here.com']
 
     # Send notification email
     notice_EMail(start_time, fromaddr, toaddr, subject, body)
@@ -29,7 +29,7 @@ try:
     start_time=datetime.now()
     # Do something here
 
-    
+
     # Send success email
     prepare_email(subject='Success Test', body='The test program ran and a test email was sent ', start_time=start_time)
 except Exception as e:
