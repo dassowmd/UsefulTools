@@ -36,31 +36,49 @@ funcRelationship_Distinct_Values = function(field1, field2, data){
   return(var)
 }
 
-funcExploreDataCountRelationships = function(dataSet){
-  summary(dataSet)
-  for(i1 in names(dataSet)){
-    for(i2 in names(dataSet)){
-      if(i1 != i2){
-        output = funcCountRelationship_Counts(toString(i1), toString(i2), dataSet)
-        print(output)
-        ## Uncomment to print the reverse comparisons next to each other
-        #outputReverse = funcRelationship(i2, i1, Size_Info_for_BM)
-        #print(outputReverse)
+funcExploreDataCountRelationships = function(dataSet, SingleFieldToCompare = NULL){
+  if(is.null(SingleFieldToCompare)){
+    #summary(dataSet)
+    for(i1 in names(dataSet)){
+      for(i2 in names(dataSet)){
+        if(i1 != i2){
+          output = funcCountRelationship_Counts(toString(i1), toString(i2), dataSet)
+          print(output)
+          ## Uncomment to print the reverse comparisons next to each other
+          #outputReverse = funcRelationship(i2, i1, Size_Info_for_BM)
+          #print(outputReverse)
+        }
+      }
+    }
+  }else{
+      for(i2 in names(dataSet)){
+      if(SingleFieldToCompare != i2){
+        output = funcCountRelationship_Counts(toString(SingleFieldToCompare), toString(i2), dataSet)
+      print(output)
       }
     }
   }
 }
 
-funcExploreDataDistinctRelationships = function(dataSet){
-  summary(dataSet)
-  for(i1 in names(dataSet)){
+funcExploreDataDistinctRelationships = function(dataSet, SingleFieldToCompare = NULL){
+  if(is.null(SingleFieldToCompare)){
+    #summary(dataSet)
+    for(i1 in names(dataSet)){
+      for(i2 in names(dataSet)){
+        if(i1 != i2){
+          output = funcRelationship_Distinct_Values(toString(i1), toString(i2), dataSet)
+          print(output)
+          ## Uncomment to print the reverse comparisons next to each other
+          #outputReverse = funcRelationship(i2, i1, Size_Info_for_BM)
+          #print(outputReverse)
+        }
+      }
+    }
+  }else{
     for(i2 in names(dataSet)){
-      if(i1 != i2){
-        output = funcRelationship_Distinct_Values(toString(i1), toString(i2), dataSet)
+      if(SingleFieldToCompare != i2){
+        output = funcRelationship_Distinct_Values(toString(SingleFieldToCompare), toString(i2), dataSet)
         print(output)
-        ## Uncomment to print the reverse comparisons next to each other
-        #outputReverse = funcRelationship(i2, i1, Size_Info_for_BM)
-        #print(outputReverse)
       }
     }
   }
@@ -79,6 +97,18 @@ funcGraphHistogramsForAllFields = function(dataSet){
   }
 }
 
+funcUniqueValues = function(dataSet){
+  for(i in names(dataSet)){
+    print(i)
+    # uVals = unique(dataSet[i])
+    counts<-data.frame(table(dataSet[i]))
+    # Rename Var1 in counts to column name
+    colnames(counts)[1] = i
+    # uVals
+    print(counts)
+    }
+}
+
 #Use to copy table out of R and onto clipboard
 copy.table <- function(obj, size = 4096) {
   clip <- paste('clipboard-', size, sep = '|')
@@ -87,3 +117,18 @@ copy.table <- function(obj, size = 4096) {
   close(f)
 }
 
+# Returns the number of unique values in a column 
+UniqueValues = function(data, col)
+{
+  # print(paste0("There are ", length(unique(data[[col]]))), " unique values in ", col)
+  if(length(unique(data[[col]])) < 100000){
+    results = count(data, col)
+    print("Results gathered")
+    sorted = results[order(-results[2]), ]
+    print("Results sorted")
+    return(sorted)
+  }else{
+    print("There are more than 100k unique values in this field")
+    return("There are more than 100k unique values in this field")
+  }
+}
