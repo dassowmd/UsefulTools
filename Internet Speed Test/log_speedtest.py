@@ -1,4 +1,9 @@
-#!/usr/bin/env python
+# C:\Users\dasso\Google
+# Drive\Python
+# Library\Internet
+# Speed
+# Test
+# #!/usr/bin/env python
 import os
 import subprocess
 import logging
@@ -15,7 +20,6 @@ if len(sys.argv) < 2:
 else:
     logFolder = sys.argv[1]
 LOG_FILE = str(logFolder) + '\Log Files\speedtest.log'
-print LOG_FILE
 if not os.path.exists(LOG_FILE):
     os.makedirs(logFolder + '\Log Files')
 def main():

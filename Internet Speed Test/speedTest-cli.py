@@ -796,6 +796,9 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        next 
 
 # vim:ts=4:sw=4:expandtab
