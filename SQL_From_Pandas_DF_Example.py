@@ -11,7 +11,7 @@ from datetime import datetime
 user = input('What user?')
 pw = input('What is the password?')
 
-params = urllib.parse.quote_plus('DRIVER={ODBC Driver 17 for SQL Server};SERVER=18.213.233.196;DATABASE=Pioneer;UID=%s;PWD={%s};fast_executemany=True;' %(user, pw))
+params = urllib.parse.quote_plus('DRIVER={ODBC Driver 17 for SQL Server};SERVER=<Server_Name>;DATABASE=<DB_Name>;UID=%s;PWD={%s};fast_executemany=True;' %(user, pw))
 engine = sqlalchemy.create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
 conn = engine.connect()
 df = pd.read_csv(r'C:\Users\mdassow\Downloads\ExcelExport.csv')
