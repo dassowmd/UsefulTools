@@ -1,11 +1,11 @@
 import os
 import get_song_data
 from shutil import copyfile
-import tqdm
+from tqdm import tqdm
 
 def walk_directory(root_directory):
     is_delete_old_file = True
-    for dir_name, sub_dir_list, file_list in os.walk(root_directory):
+    for dir_name, sub_dir_list, file_list in tqdm(os.walk(root_directory)):
         print('Found directory: %s' %dir_name)
         if 'Music Organized' not in str(dir_name):
             for fname in file_list:
@@ -65,4 +65,4 @@ def move_file(curr_filepath, dest_root, song_data, is_delete_old_file = False, o
         os.remove(curr_filepath)
 
 
-walk_directory('/media/dassowmd/My Passport/Old Hard Drive/Music (copy)')
+walk_directory(r"Z:\Mel's HP External Hard Drive\archive_delete_me_after_10.1.2019\Music")
