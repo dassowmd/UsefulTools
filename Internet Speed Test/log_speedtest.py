@@ -12,15 +12,15 @@ import re
 import time
 import datetime
 
-SPEEDTEST_CMD = 'C:\Anaconda2\Lib\site-packages\speedtest_cli.py'
+SPEEDTEST_CMD = 'C:\Python37\Lib\site-packages\speedtest.py'
 sleepTime = 1500
 if len(sys.argv) < 2:
-    logFolder = raw_input('Please enter the folder that you would like to save the speedtest.log file in\n')
-    sleepTime = int(raw_input("How many seconds would you like the program to wait befor running again?\n"))
+    logFolder = input('Please enter the folder that you would like to save the speedtest.log file in\n')
+    sleepTime = int(input("How many seconds would you like the program to wait befor running again?\n"))
 else:
     logFolder = sys.argv[1]
 LOG_FILE = str(logFolder) + '\Log Files\speedtest.log'
-if not os.path.exists(LOG_FILE):
+if not os.path.exists(logFolder + '\Log Files'):
     os.makedirs(logFolder + '\Log Files')
 def main():
     while True:
@@ -49,7 +49,7 @@ def get_speedtest_results():
     #with subprocess.check_output('python ' + SPEEDTEST_CMD + ' --simple') as speedtest_output:
     #print speedtest_output
     #print len(speedtest_output)
-    speedtest_output_clean = speedtest_output.split('\n')
+    speedtest_output_clean = speedtest_output.decode("utf-8").split('\n')
     #print(speedtest_output_clean)
     for line in speedtest_output_clean:
         lineSplit = line.split()
