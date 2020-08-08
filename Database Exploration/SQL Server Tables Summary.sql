@@ -18,7 +18,7 @@ INNER JOIN
 INNER JOIN 
     sys.allocation_units a ON p.partition_id = a.container_id
 INNER JOIN INFORMATION_SCHEMA.COLUMNS c ON c.TABLE_NAME = t.name
-	
+
 LEFT OUTER JOIN 
     sys.schemas s ON t.schema_id = s.schema_id
 WHERE 

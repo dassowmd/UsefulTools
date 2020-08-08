@@ -3,26 +3,31 @@ import get_song_data
 from shutil import copyfile
 from tqdm import tqdm
 
+
 def walk_directory(root_directory):
     is_delete_old_file = True
     for dir_name, sub_dir_list, file_list in tqdm(os.walk(root_directory)):
-        print('Found directory: %s' %dir_name)
-        if 'Music Organized' not in str(dir_name):
+        print("Found directory: %s" % dir_name)
+        if "Music Organized" not in str(dir_name):
             for fname in file_list:
                 try:
                     filepath = os.path.join(dir_name, fname)
                     song_data = get_song_data.search_best_match(filepath)
-                    print 'Successfully matched song %s' %fname
-                    move_file(filepath, root_directory, song_data, is_delete_old_file, True)
+                    print("Successfully matched song %s" % fname)
+                    move_file(
+                        filepath, root_directory, song_data, is_delete_old_file, True
+                    )
                 except Exception as e:
-                    print fname
+                    print(fname)
 
-                    print e
+                    print(e)
                     # Copy file that caused error to review directory
-                    print 'moved file to review directory'
+                    print("moved file to review directory")
 
                     try:
-                        dest_path = os.path.join(root_directory, 'Music Organized','0_Review',fname)
+                        dest_path = os.path.join(
+                            root_directory, "Music Organized", "0_Review", fname
+                        )
                         dest_dir = os.path.dirname(dest_path)
                         if os.path.exists(dest_dir):
                             pass
@@ -33,12 +38,15 @@ def walk_directory(root_directory):
                         if is_delete_old_file == True:
                             os.remove(filepath)
                     except Exception as e:
-                        print e
+                        print(e)
 
-def move_file(curr_filepath, dest_root, song_data, is_delete_old_file = False, overwrite_new = True):
-    dest_dir = os.path.join(dest_root, 'Music Organized', song_data['artist'])
+
+def move_file(
+    curr_filepath, dest_root, song_data, is_delete_old_file=False, overwrite_new=True
+):
+    dest_dir = os.path.join(dest_root, "Music Organized", song_data["artist"])
     filename, file_extension = os.path.splitext(curr_filepath)
-    file_title = song_data['title'].replace('/', '//') + file_extension
+    file_title = song_data["title"].replace("/", "//") + file_extension
     dest_path = os.path.join(dest_dir, file_title)
     successfull_copy = False
 
@@ -52,17 +60,19 @@ def move_file(curr_filepath, dest_root, song_data, is_delete_old_file = False, o
             try:
                 copyfile(curr_filepath, dest_path)
             except Exception as e:
-                print e
+                print(e)
         else:
-            print 'File already exists at %s. Skipping' %dest_path
+            print("File already exists at %s. Skipping" % dest_path)
     else:
         if overwrite_new == True:
             try:
                 copyfile(curr_filepath, dest_path)
             except Exception as e:
-                print e
+                print(e)
     if is_delete_old_file == True:
         os.remove(curr_filepath)
 
 
-walk_directory(r"Z:\Mel's HP External Hard Drive\archive_delete_me_after_10.1.2019\Music")
+walk_directory(
+    r"Z:\Mel's HP External Hard Drive\archive_delete_me_after_10.1.2019\Music"
+)

@@ -50,26 +50,25 @@ import time
 cap = cv2.VideoCapture(0)
 fgbg = cv2.createBackgroundSubtractorMOG2()
 
-while (1):
+while 1:
     ret, frame = cap.read()
 
     fgmask = fgbg.apply(frame)
     # cv2.imshow('fgmask', fgmask)
 
-    kernel = np.ones((5,5),np.uint8)
-    erosion = cv2.erode(fgmask,kernel,iterations = 1)
-    dilation = cv2.dilate(erosion,kernel,iterations = 1)
+    kernel = np.ones((5, 5), np.uint8)
+    erosion = cv2.erode(fgmask, kernel, iterations=1)
+    dilation = cv2.dilate(erosion, kernel, iterations=1)
 
     # cv2.imshow('Erosion',erosion)
     # cv2.imshow('Dilation',dilation)
 
-    res = cv2.bitwise_and(frame,frame, mask= dilation)
-    cv2.imshow('res',res)
+    res = cv2.bitwise_and(frame, frame, mask=dilation)
+    cv2.imshow("res", res)
 
     # find contours in the mask and initialize the current
     # (x, y) center of the moving object
-    cnts = cv2.findContours(dilation.copy(), cv2.RETR_EXTERNAL,
-                            cv2.CHAIN_APPROX_SIMPLE)
+    cnts = cv2.findContours(dilation.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     cnts = imutils.grab_contours(cnts)
     center = None
 
@@ -92,13 +91,16 @@ while (1):
             cv2.circle(frame, center, 5, (0, 0, 255), -1)
 
             rect_mask = np.zeros(frame.shape[:2], np.uint8)
-            rect_mask[y - (radius * 1.5):y + (radius * 1.5), x - (radius * 1.5):x + (radius * 1.5)] = 255
+            rect_mask[
+                y - (radius * 1.5) : y + (radius * 1.5),
+                x - (radius * 1.5) : x + (radius * 1.5),
+            ] = 255
             res = cv2.bitwise_and(frame, frame, mask=rect_mask)
             # time.sleep(.5)
-    cv2.imshow('frame', frame)
-    cv2.imshow('res', res)
+    cv2.imshow("frame", frame)
+    cv2.imshow("res", res)
 
-    k = cv2.waitKey(30) & 0xff
+    k = cv2.waitKey(30) & 0xFF
     if k == 27:
         break
 

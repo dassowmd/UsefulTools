@@ -5,10 +5,17 @@ from tqdm import tqdm
 
 
 # Parameters
-# server = raw_input('What server would you like to connect to?\n')
-# db = raw_input('What database would you like to research?\n')
+# server = input('What server would you like to connect to?\n')
+# db = input('What database would you like to research?\n')
 # # Create the connection
-conn = pyodbc.connect('DRIVER={SQL Server};SERVER=' + server + ';DATABASE=' + db + ';Trusted_Connection=yes')
+conn = pyodbc.connect(
+    "DRIVER={SQL Server};SERVER="
+    + server
+    + ";DATABASE="
+    + db
+    + ";Trusted_Connection=yes"
+)
+
 
 def testSearch():
     sql = """select *

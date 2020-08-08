@@ -3,10 +3,12 @@ import pyodbc
 
 import MySQLdb
 
-conn = MySQLdb.connect(host="localhost",    # your host, usually localhost
-                     user="dassowmd",         # your username
-                     passwd="12345",  # your password
-                     db="mydb")        # name of the data base
+conn = MySQLdb.connect(
+    host="localhost",  # your host, usually localhost
+    user="dassowmd",  # your username
+    passwd="12345",  # your password
+    db="mydb",
+)  # name of the data base
 
 # you must create a Cursor object. It will let
 #  you execute all the queries you need
@@ -25,4 +27,3 @@ for row in cur.fetchall():
 print results
 
 conn.close()
-
