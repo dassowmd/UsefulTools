@@ -97,5 +97,5 @@ def line_count(directory):
 
 
 if __name__ == "__main__":
-    directory = r"C:\Users\u672901\Documents\Match_Merge\match_merge"
+    directory = input("What directory would you like to count?")
     line_count(directory=directory)

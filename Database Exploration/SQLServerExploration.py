@@ -374,10 +374,7 @@ def getCountofFieldNull(db, schema, table, columnName, dataType):
 
 
 tables = getTableInfo()
-tables.to_csv("C:\Users\u672901\Desktop\\" + server + "_" + db + "_Table Info.csv")
 
 colData = getColumnInfo_System()
 colData = getUsageData(colData)
-colData.to_csv("C:\Users\u672901\Desktop\\" + server + "_" + db + "_Usage Info.csv")
 
-# dfColumns.to_csv('C:\Users\u672901\Desktop\TestExport.csv')
