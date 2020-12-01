@@ -29,12 +29,14 @@ inputFile = open(sys.argv[1], "rU")
 csvInput = csv.reader(inputFile)
 
 # Create output files
+errors_csv_file_path = input("Where would you like to save the error address to? (.csv)")
 errors = open(
-    "C:\\Users\\u672901\\Google Drive\\Python Library\\Address Verification\\errors.csv",
+    errors_csv_file_path,
     "w",
 )
+verified_csv_file_path = input("Where would you like to save the verifies address to? (.csv)")
 verified = open(
-    "C:\\Users\\u672901\\Google Drive\\Python Library\\Address Verification\\verified.csv",
+    verified_csv_file_path,
     "w",
 )
 
