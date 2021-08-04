@@ -1,0 +1,119 @@
+import ibm_db
+import json
+import pandas as pd
+from tqdm import tqdm
+from multiprocessing import Queue
+
+def get_credentials():
+    with open(r'config.json', 'r') as f:
+        return json.load(f)
+
+credentials = get_credentials()
+env = 'prd'
+# tst
+myDatabase = f"DATABASE={credentials['envs'][env]['database']};HOSTNAME={credentials['envs'][env]['hostname']};PORT={credentials['envs'][env]['port']};PROTOCOL=TCPIP;UID={credentials['username']};PWD={credentials['password']}"
+
+conn = ibm_db.connect(myDatabase, credentials['username'], credentials['password'])
+
+
+sql = """SELECT FP_DTL.FP_ID,
+       FP_DTL.EFCTV_DT,
+       RTRIM(FP_TYP.FP_TYP_TXT)         AS FP_TYP_TXT,
+       FP_FRST_NM,
+       FP_MID_NM,
+       FP_LST_NM,
+       ADDR_STR_LNE1_TXT,
+       ADDR_STR_LNE2_TXT,
+       CITY_NM,
+       ST_CD,
+       ZIP_CD_TXT,
+       ZIP_PLUS4_TXT,
+       EML_ADDR_TXT,
+       PH_NMBR_1_TXT,
+       PH_NMBR_2_TXT,
+       CELL_PH_NMBR_TXT,
+       DNM_CD,
+       DNEML_CD,
+       E_TRD_ID,
+       FRST_TRD_DT,
+       FP_TITLE_TXT,
+       INSTNL_TRD_CD,
+       FP_DTL.FP_SGMNT_CD,
+       CRD_ID,
+       AFLT_ID,
+       MKTR_ID,
+       SLSPG_CNTC_ID,
+       FP_DTL.SLS_CHNL_CD,
+       FP_DTL.ACTV_CD,
+       FP_DTL.CRT_DT,
+       FP_DTL.CRT_TS,
+       FP_DTL.UPDT_DT,
+       FP_DTL.UPDT_TS,
+       FP_DTL.LST_TRNS_DT,
+       SYS_SRCE_CD,
+       FP_DTL.FP_SUCC_LKLY_CD,
+       CNTY_CD,
+       RIA_CD,
+       CRM_FP_ID,
+       CRM_LD_STAT_CD,
+       FIRM_TKN_ID,
+       BRNCH_OFC_TKN_ID,
+       DNC_CD,
+       MRG_FP_ID,
+       FP_STAT_CD,
+       FRST_PST_DT,
+       FP_PFRD_NM,
+       DST_REP_ID,
+       CNVRT_SE529,
+       RTRIM(STATE.PLTC_JRSD_ABRVD_NM)  AS PLTC_JRSD_ABRVD_NM,
+       RTRIM(FP_SGMNT.FP_SGMNT_DSC_TXT) AS FP_SGMNT_DSC_TXT,
+       RTRIM(FP_SUCC.FP_SUCC_LKLY_TXT)  AS FP_SUCC_LKLY_TXT,
+       RTRIM(SLS.SLS_CHNL_TXT)          AS SLS_CHNL_TXT,
+       RTRIM(ZIP.CNTY_NM)               AS CNTY_NM
+FROM DB2.O_PCR_FP_DTL FP_DTL
+         LEFT OUTER JOIN
+     DB2.PLTC_JRSD STATE
+     ON STATE.PLTC_JRSD_NMBR = FP_DTL.ST_CD
+         LEFT OUTER JOIN
+     DB2.PCR_SLS_CHNL_DM SLS
+     ON FP_DTL.SLS_CHNL_CD = SLS.SLS_CHNL_CD
+         LEFT OUTER JOIN
+     DB2.O_PCR_FP_SUCC_LKLY FP_SUCC
+     ON FP_DTL.FP_SUCC_LKLY_CD = FP_SUCC.FP_SUCC_LKLY_CD
+         LEFT OUTER JOIN
+     DB2.C_PCR_FP_SGMNT FP_SGMNT
+     ON FP_DTL.FP_SGMNT_CD = FP_SGMNT.FP_SGMNT_CD
+         LEFT OUTER JOIN
+     DB2.C_PCR_FP_TYP FP_TYP
+     ON FP_DTL.FP_TYP_CD = FP_TYP.FP_TYP_CD
+         LEFT OUTER JOIN
+         (SELECT DISTINCT ZIP_CD, CNTY_NM from DB2.ZIP_CD_DTL ZIP) ZIP
+         ON ZIP.ZIP_CD = FP_DTL.ZIP_CD_TXT
+where FP_DTL.FP_TYP_CD = 3
+WITH UR;
+"""  # TODO Remove
+import ibm_db_dbi
+conn = ibm_db_dbi.Connection(conn)
+
+cursor = conn.cursor()
+cursor.execute(sql)
+columns = cursor.description
+res_queue = Queue()
+temp_cursor_res = [None] # Setting to junk list to get into loop
+fetch_count = 1000
+while len(temp_cursor_res) > 0:
+    temp_cursor_res = cursor.fetchmany(fetch_count)
+    res_queue.put(temp_cursor_res)
+    print(f'Retrieved {res_queue.qsize() * fetch_count} records')
+
+res = []
+cursor_res = res_queue.get()
+while len(cursor_res) > 0:
+    temp = [dict(zip([column[0] for column in columns], row)) for row in tqdm(cursor_res)]
+    if len(temp) > 0:
+        res.extend(temp)
+    cursor_res = res_queue.get()
+conn.close()
+
+df = pd.DataFrame(res)
+df.to_csv(r'C:\Users\d721109\Desktop\temp\advisor_export.csv', index=False, sep='\x01')

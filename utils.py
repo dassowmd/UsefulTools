@@ -1,7 +1,7 @@
 import time
 import os
 import glob
-import cPickle
+import pickle
 
 
 def timeit(method):
@@ -18,7 +18,7 @@ def timeit(method):
         else:
             if is_print:
                 if (te - ts) * 1000 > time_min:
-                    print "%r  %2.2f ms" % (method.__name__, (te - ts) * 1000)
+                    print("%r  %2.2f ms" % (method.__name__, (te - ts) * 1000))
         return result
 
     return timed
@@ -44,7 +44,7 @@ def memoize(function, limit=None):
     list = []
 
     def memoize_wrapper(*args, **kwargs):
-        key = cPickle.dumps((args, kwargs))
+        key = pickle.dumps((args, kwargs))
         try:
             list.append(list.pop(list.index(key)))
         except ValueError:

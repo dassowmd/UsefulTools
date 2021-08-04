@@ -1,0 +1,51 @@
+#+TITLE: TOC Aliases
+A repo to hold command line aliases for the TOC team
+
+* Setup
+- Clone or copy this repo to your [[https://www.computerhope.com/jargon/h/homedir.htm][home]] directory.
+  - Example ::
+    #+NAME: Clone-Repository
+    #+BEGIN_SRC sh :results value verbatim
+      cd ~
+      git clone https://github.com/principalglobalinvestors/toc-aliases.git
+    #+END_SRC
+
+- Inside of your  =~/.bashrc= file
+  - If you don't have this file in your home directory you can just create one
+  - Example ::
+    #+NAME: Update-Bashrc
+    #+BEGIN_SRC sh
+      cd ~
+      touch .bashrc
+      echo ". ~/toc-aliases/init.sh" >> .bashrc
+    #+END_SRC
+
+- Source your .bashrc file
+  - Example ::
+    #+NAME: Source-Bashrc
+    #+BEGIN_SRC sh
+      . ~/.bashrc
+    #+END_SRC
+
+- Test it was setup by calling an alias
+  - Example ::
+    #+NAME: Call-Aliases
+    #+BEGIN_SRC sh
+      aliases?
+    #+END_SRC
+
+* Configuration
+- The [[file:src/variables.sh][variables]] file holds settings that you will be able to change to fit your needs
+  - Update these variables to point to the tools you want to use
+
+* Dependencies
+- Tools
+  - Git ::
+    Git is the scm of choice for PGI. Many aliases in this repository are to help create quicker
+    interactions with this cli. This tool is most likely already installed by the time you are looking
+    at this repository. For this reason and to avoid version issues there is not a download link.
+  - [[https://pandoc.org/installing.html][Pandoc]] :: 
+    Pandoc is a cli tool to convert a file to another type of file. Some of the aliases will assume that
+    this tool is installed and set on your path.
+  - [[https://www.python.org/downloads/][Python]] ::
+    Some of the tools will utilize python scripts that store in the [[file:resources/][resources]] folder.
