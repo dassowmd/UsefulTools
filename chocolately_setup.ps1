@@ -18,6 +18,8 @@ choco install notepadplusplus.install
 choco install 7zip.install
 choco install treesizefree
 choco install zoom
+choco install lastpass
+choco install beyondcompare
 
 # Do my job
 choco install git.install
@@ -25,6 +27,7 @@ choco install gh
 choco install pycharm-community
 choco install intellijidea-community
 choco install datagrip
+choco install dbeaver
 choco install pip
 choco install python
 choco install nodejs.install
@@ -39,6 +42,7 @@ choco install tflint
 choco install cmder
 choco install openjdk
 choco install virtualbox
+choco install docker-cli
 
 choco install vscode
 choco install vscode-python
@@ -47,7 +51,7 @@ choco install vscode-yaml
 choco install vscode-vsonline
 choco install vscode-jupyter
 
-refreshenv
+refreshenv # Loads pip exe in to session
 pip install black
 pip install yamllint
 pip install flake8
