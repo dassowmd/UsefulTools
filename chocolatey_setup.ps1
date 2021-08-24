@@ -8,6 +8,10 @@ Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 ## Installs
 # Personal
 choco install spotify
+choco install logitech-options
+choco install setpoint
+choco install unifying
+choco install strokesplus
 
 # Productivity
 choco install wox
@@ -57,3 +61,11 @@ pip install yamllint
 pip install flake8
 pip install sphinx
 pip install pandas
+
+# Set Windows Explorer Default settings
+$key = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced'
+Set-ItemProperty $key Hidden 1
+Set-ItemProperty $key HideFileExt 0
+Set-ItemProperty $key ShowSuperHidden 1
+Write-Output 'Restarting Windows Explorer'
+Stop-Process -processname explorer
