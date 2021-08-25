@@ -15,7 +15,7 @@ choco install strokesplus
 
 # Productivity
 choco install wox
-choco install greenshot
+choco uninstall screenpresso
 choco install path-copy-copy
 choco install firefox
 choco install notepadplusplus.install
