@@ -2,15 +2,22 @@ import requests
 import datetime
 import time
 from multiprocessing.pool import ThreadPool
+import logging
+import sys
 
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+handler = logging.StreamHandler(stream=sys.stdout)
+
+logger.addHandler(handler)
 
 def update_stats(start_time):
     global total_time
     global count
     end_time = datetime.datetime.now()
-    print(f'Download Time: {end_time - start_time}')
+    logger.info(f'Download Time: {end_time - start_time}')
     total_time += (end_time - start_time).total_seconds()
-    print(f'Average Download Time: {total_time / (count)}')
+    logger.info(f'Average Download Time: {total_time / (count)}')
     count += 1
 
 
@@ -30,7 +37,7 @@ def loop_get_url():
     sub_pool.join()
 
 
-thread_count = 5
+thread_count = 3
 pool = ThreadPool(thread_count)
 count = 1
 total_time = 0
@@ -42,4 +49,4 @@ for i in range(thread_count):
 pool.close()
 pool.join()
 
-print(f'count: {count}')
+logger.info(f'count: {count}')

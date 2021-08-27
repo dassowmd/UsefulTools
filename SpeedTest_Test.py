@@ -20,10 +20,10 @@ cur.execute("SELECT * FROM mydb.Internet_Speed_Test")
 # print all the first cell of all the rows
 results = {}
 for row in cur.fetchall():
-    print row
+    print(row)
     tempDict = dict.fromkeys(row)
     results.update(tempDict)
 
-print results
+print(results)
 
 conn.close()
