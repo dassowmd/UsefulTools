@@ -2,9 +2,16 @@ import os
 import sys
 import hashlib
 
-# from win32com.client import Dispatch
+from win32com.client import Dispatch
 import send2trash
+from tqdm import tqdm
+import logging
 
+logger = logging.getLogger(__name__)
+loghandler = logging.StreamHandler()
+logger.setLevel(logging.INFO)
+loghandler.setLevel(logging.DEBUG)
+logger.addHandler(loghandler)
 
 def hashfile(path, blocksize=65536):
     afile = open(path, "rb")
@@ -17,27 +24,35 @@ def hashfile(path, blocksize=65536):
     return hasher.hexdigest()
 
 
-def findDup(parentFolder):
+def list_file_paths(parentFolder):
+    file_paths = []
+    for dirName, subdirs, fileList in tqdm(os.walk(parentFolder)):
+        # Get the path for the file
+        print("Scanning %s" % dirName)
+        for filename in fileList:
+            # Get the path to the file
+            path = os.path.join(dirName, filename)
+            file_paths.append(path)
+
+    return file_paths
+
+def find_dups(parentFolder):
+    file_paths = list_file_paths(parentFolder=parentFolder)
     # Dups in format {hash:[names]}
     dups = {}
-    for dirName, subdirs, fileList in os.walk(parentFolder):
-        # Get the path for the file
-        print("Scanning %s..." % dirName)
-        for filename in fileList:
-            try:
-                # Get the path to the file
-                path = os.path.join(dirName, filename)
-                # Calculate hash
-                file_hash = hashfile(path)
-                # Add or append the file path
-                if file_hash in dups:
-                    dups[file_hash].append(path)
-                else:
-                    dups[file_hash] = [path]
-            except Exception as e:
-                print(e)
+    for path in tqdm(file_paths):
+        logger.debug(path)
+        try:
+            # Calculate hash
+            file_hash = hashfile(path)
+            # Add or append the file path
+            if file_hash in dups:
+                dups[file_hash].append(path)
+            else:
+                dups[file_hash] = [path]
+        except Exception as e:
+            print(e)
     return dups
-
 
 def joinDicts(dict1, dict2):
     for key in dict2.keys():
@@ -75,14 +90,14 @@ def deleteDups(dict1):
         print("No duplicate files found.")
 
 
-# def createShortcut(fileDirectory, shortcutName, targetPath):
-#     #replace a file in fileDirectory with a link to the file at targetPath
-#     shell = Dispatch('WScript.Shell')
-#     shortcut = shell.CreateShortCut(fileDirectory + '\\' + shortcutName)
-#     shortcut.Targetpath = targetPath
-#     shortcut.WorkingDirectory = fileDirectory + '\\' + shortcutName
-#     shortcut.IconLocation = targetPath
-#     shortcut.save()
+def createShortcut(fileDirectory, shortcutName, targetPath):
+    #replace a file in fileDirectory with a link to the file at targetPath
+    shell = Dispatch('WScript.Shell')
+    shortcut = shell.CreateShortCut(fileDirectory + '\\' + shortcutName)
+    shortcut.Targetpath = targetPath
+    shortcut.WorkingDirectory = fileDirectory + '\\' + shortcutName
+    shortcut.IconLocation = targetPath
+    shortcut.save()
 
 
 def printResults(dict1):
@@ -132,7 +147,7 @@ if __name__ == "__main__":
         # Iterate the folders given
         if os.path.exists(i):
             # Find the duplicated files and append them to the dups
-            joinDicts(dups, findDup(i))
+            joinDicts(dups, find_dups(i))
         else:
             print("%s is not a valid path, please verify" % i)
             sys.exit()
