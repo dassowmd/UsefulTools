@@ -12,7 +12,9 @@ def connect_imap():
         )
     )
     username = input("Please enter your Gmail user name")
-    pw = getpass.getpass("Password:")
+    pw = getpass.getpass("Password or hit enter to use saved password")
+    if len(pw) == 0:
+        pw = 'wzbvyiroygehepft'
     m.login(username, pw)
 
     return m
@@ -134,6 +136,26 @@ def disconnect_imap(m):
 if __name__ == "__main__":
     pool = ThreadPool(1)
     m_con = connect_imap()
+    pool.apply_async(
+        move_to_trash_from,
+        args=(m_con, "[Gmail]/All Mail", "@otta.com"),
+    )
+    pool.apply_async(
+        move_to_trash_from,
+        args=(m_con, "[Gmail]/All Mail", "@volumeone.org"),
+    )
+    pool.apply_async(
+        move_to_trash_from,
+        args=(m_con, "[Gmail]/All Mail", "@inbox.kaymbu.com"),
+    )
+    pool.apply_async(
+        move_to_trash_from,
+        args=(m_con, "[Gmail]/All Mail", "@kaymbu.com"),
+    )
+    pool.apply_async(
+        mark_read,
+        args=(m_con, "[Gmail]/All Mail", "do-not-reply@allegis-marketplace.com"),
+    )
     pool.apply_async(
         mark_read,
         args=(m_con, "[Gmail]/All Mail", "do-not-reply@allegis-marketplace.com"),

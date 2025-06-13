@@ -26,6 +26,8 @@ def findDup(parentFolder):
             # Get the path to the file
             path = os.path.join(dirName, filename)
 
+            if '$RECYCLE.BIN' in path:
+                continue
             # Remove Parent Folder name from path so I can compare names that are in subfolders
             indexPath = path.index(parentFolder)
             comparePath = path[(indexPath + len(parentFolder) + 1) :]
@@ -101,10 +103,10 @@ def printResults(dict1):
         print ("The following files have the same name, but are different files")
         print ("___________________")
 
-        print results[1]
+        print(results[1])
         for result in results:
             for subresult in result:
-                print subresult
+                print(subresult)
                 for s in result:
                     if s[1] != subresult[1]:
                         print ("\t\t%s" % s)
@@ -130,8 +132,8 @@ if __name__ == "__main__":
             "Please enter the directory paths you would like to compare. Please separate by a comma\n"
         ).split(",")
         for a in tempArgs:
-            a = a.replace("'", "")
-            a = a.replace('"', "")
+            a = a.strip("'")
+            a = a.strip('"')
             args.append(a.strip())
 
     if input("Delete files in 2nd argument filepath? True/False\n").lower() == "true":

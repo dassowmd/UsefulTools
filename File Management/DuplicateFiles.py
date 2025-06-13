@@ -93,10 +93,10 @@ def deleteDups(dict1):
 def createShortcut(fileDirectory, shortcutName, targetPath):
     #replace a file in fileDirectory with a link to the file at targetPath
     shell = Dispatch('WScript.Shell')
-    shortcut = shell.CreateShortCut(fileDirectory + '\\' + shortcutName)
-    shortcut.Targetpath = targetPath
-    shortcut.WorkingDirectory = fileDirectory + '\\' + shortcutName
-    shortcut.IconLocation = targetPath
+    shortcut = shell.CreateShortCut(str(fileDirectory) + '\\' + str(shortcutName))
+    shortcut.Targetpath = str(targetPath)
+    shortcut.WorkingDirectory = str(fileDirectory) + '\\' + str(shortcutName)
+    shortcut.IconLocation = str(targetPath)
     shortcut.save()
 
 
@@ -118,18 +118,68 @@ def printResults(dict1):
 
 if __name__ == "__main__":
     args = []
+    # TODO remove
+    args.extend([
+        "D:Pictures\Spain",
+        "D:Pictures\St Croix water camera",
+        "D:Pictures\Raelynns First Christmas",
+        "D:Pictures\Raelynn",
+        "D:Pictures\Raelynn Videos",
+        r"D:Pictures\Norway",
+        "D:Pictures\Wedding Pics",
+        "D:Pictures\Matt Mel Washington",
+        "D:Pictures\Mel baby pics",
+        "D:Pictures\Mel's HP External Hard Drive",
+        "D:Pictures\Mel's HP Laptop Files",
+        "D:Pictures\Mels HP External Hard Drive",
+        "D:Pictures\Mels HP Laptop Files",
+        "D:Pictures\Mels Photos",
+        "D:Pictures\Mels SD Cards",
+        "D:Pictures\Mels Thumbdrives",
+        "D:Pictures\mels_phone",
+        r"D:Pictures\2005-01 (Jan)",
+        r"D:Pictures\2006-01 (Jan)",
+        "D:Pictures\Addison",
+        "D:Pictures\Camera Roll",
+        "D:Pictures\Canoe Trip",
+        "D:Pictures\Dad",
+        "D:Pictures\DCIM",
+        "D:Pictures\FileHistory",
+        "D:Pictures\matts_laptop",
+        "D:Pictures\matts_phone",
+        "D:Pictures\Music",
+        "D:Pictures\My Pictures",
+        "D:Pictures\Picutres taken from googledrive REVIEW",
+        "D:Pictures\Ross Wedding Pics",
+        "D:Pictures\Cindis Phone",
+        "D:Pictures\Viewpoint",
+        "D:Videos\Drone Videos",
+        "D:Videos\Mel baby pics",
+        "D:Videos\Insanity Ready to Burn",
+        "D:Videos\ISO_DVDs",
+        "D:Videos\T25",
+        "D:Videos\P90X Ready to Burn",
+        "D:Videos\Mel's HP External Hard Drive",
+        "D:Videos\Mel's HP Laptop Files",
+        "D:Videos\Mels HP External Hard Drive",
+        "D:Videos\Mels HP Laptop Files",
+        "D:Videos\Mels Thumbdrives",
+        "D:Videos\DCIM",
+        "D:\Dell Laptop",
+    ])
     # Set args if passed
     if len(sys.argv) > 1:
         args = sys.argv[1:]
 
+
     # If not args are passed, request them from user
-    if len(sys.argv) <= 1:
+    if len(args) <= 1:
         tempArgs = input(
             "Please enter the directory paths you would like to compare. Please separate by a comma\n"
         ).split(",")
         for a in tempArgs:
-            a = a.replace("'", "")
-            a = a.replace('"', "")
+            a = a.strip("'")
+            a = a.strip('"')
             args.append(a.strip())
 
     if input("Delete files in 2nd argument filepath? True/False\n").lower() == "true":

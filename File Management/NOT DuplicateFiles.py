@@ -106,8 +106,8 @@ if __name__ == "__main__":
             "Please enter the directory paths you would like to compare. Please separate by a comma\n"
         ).split(",")
         for a in tempArgs:
-            a = a.replace("'", "")
-            a = a.replace('"', "")
+            a = a.strip("'")
+            a = a.strip('"')
             args.append(a.strip())
 
     # if input('Delete files in 2nd argument filepath? True/False\n').lower() == "true":
