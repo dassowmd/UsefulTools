@@ -1,0 +1,143 @@
+{
+  "name": "Example Rules Set",
+  "description": "Collection of example rules for common email cleanup scenarios",
+  "version": "1.0",
+  "created_at": "2024-01-01T00:00:00",
+  "rules": [
+    {
+      "id": "delete_old_promotional",
+      "name": "Delete Old Promotional Emails", 
+      "description": "Delete promotional emails older than 7 days to keep inbox clean",
+      "criteria": {
+        "labels": ["CATEGORY_PROMOTIONS"],
+        "older_than_days": 7
+      },
+      "action": {
+        "type": "delete"
+      },
+      "enabled": true,
+      "priority": 1
+    },
+    {
+      "id": "auto_read_notifications",
+      "name": "Auto-read Notification Emails",
+      "description": "Automatically mark notification emails as read",
+      "criteria": {
+        "from": "@notifications.github.com",
+        "is_unread": true
+      },
+      "action": {
+        "type": "mark_read"
+      },
+      "enabled": true,
+      "priority": 2
+    },
+    {
+      "id": "delete_large_attachments",
+      "name": "Delete Large Attachments",
+      "description": "Delete emails with large attachments older than 90 days",
+      "criteria": {
+        "has_attachment": true,
+        "size_larger_than": 26214400,
+        "older_than_days": 90
+      },
+      "action": {
+        "type": "delete"
+      },
+      "enabled": false,
+      "priority": 3,
+      "max_messages": 100
+    },
+    {
+      "id": "organize_receipts",
+      "name": "Organize Receipt Emails",
+      "description": "Label receipt emails for easy organization",
+      "criteria": {
+        "has_words": "receipt OR invoice OR 'order confirmation'"
+      },
+      "action": {
+        "type": "add_label",
+        "parameters": {
+          "labels": ["receipts"]
+        }
+      },
+      "enabled": true,
+      "priority": 4
+    },
+    {
+      "id": "delete_newsletter_older_30days",
+      "name": "Delete Old Newsletters",
+      "description": "Delete newsletter emails older than 30 days",
+      "criteria": {
+        "has_words": "unsubscribe",
+        "older_than_days": 30,
+        "exclude_words": "important"
+      },
+      "action": {
+        "type": "delete"
+      },
+      "enabled": true,
+      "priority": 5
+    },
+    {
+      "id": "archive_old_sent",
+      "name": "Archive Old Sent Emails", 
+      "description": "Archive sent emails older than 1 year",
+      "criteria": {
+        "labels": ["SENT"],
+        "older_than_days": 365
+      },
+      "action": {
+        "type": "remove_label",
+        "parameters": {
+          "labels": ["INBOX"]
+        }
+      },
+      "enabled": false,
+      "priority": 6
+    },
+    {
+      "id": "mark_read_social_media",
+      "name": "Auto-read Social Media Notifications",
+      "description": "Automatically mark social media notifications as read",
+      "criteria": {
+        "from_domain": "facebookmail.com",
+        "is_unread": true
+      },
+      "action": {
+        "type": "mark_read"
+      },
+      "enabled": true,
+      "priority": 7
+    },
+    {
+      "id": "delete_spam_keywords",
+      "name": "Delete Spam-like Emails",
+      "description": "Delete emails with common spam keywords",
+      "criteria": {
+        "has_words": "urgent action required OR limited time offer OR act now",
+        "older_than_days": 1
+      },
+      "action": {
+        "type": "delete"
+      },
+      "enabled": true,
+      "priority": 8,
+      "max_messages": 50
+    }
+  ],
+  "metadata": {
+    "author": "Gmail Cleanup Team",
+    "usage_notes": [
+      "Review rules carefully before enabling",
+      "Start with dry_run: true to test rules",
+      "Adjust older_than_days values based on your needs",
+      "Be careful with delete actions - they are permanent"
+    ],
+    "categories": [
+      "cleanup",
+      "organization", 
+      "automation"
+    ]
+  }
+}

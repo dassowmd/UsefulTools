@@ -1,2 +1,3 @@
 /Database Exploration/DB2/config.json
 /.idea/
+**/node_modules/**
