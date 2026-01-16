@@ -1,6 +1,7 @@
 import imaplib
 import datetime
 import json
+import logging
 import re
 from collections import Counter
 from multiprocessing.pool import ThreadPool
@@ -9,6 +10,14 @@ from pathlib import Path
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
+
+# Configure logging
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
 
 # Gmail IMAP OAuth2 scope - full mailbox access
 SCOPES = ['https://mail.google.com/']
@@ -43,7 +52,7 @@ def save_config(config):
     """Save config to file."""
     with open(CONFIG_FILE, 'w') as f:
         json.dump(config, f, indent=2)
-    print(f"Config saved to {CONFIG_FILE}")
+    logger.info(f"Config saved to {CONFIG_FILE}")
 
 
 def get_oauth2_credentials():
@@ -57,11 +66,11 @@ def get_oauth2_credentials():
     # If no valid credentials, get new ones
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:
-            print("Refreshing OAuth2 token...")
+            logger.info("Refreshing OAuth2 token...")
             creds.refresh(Request())
         else:
             if not CREDENTIALS_FILE.exists():
-                print(f"ERROR: {CREDENTIALS_FILE} not found!")
+                logger.error(f"ERROR: {CREDENTIALS_FILE} not found!")
                 print("\nTo set up OAuth2 authentication:")
                 print("1. Go to https://console.cloud.google.com/")
                 print("2. Create a new project (or select existing)")
@@ -71,14 +80,14 @@ def get_oauth2_credentials():
                 print("6. Download the JSON and save as 'credentials.json' in this folder")
                 raise FileNotFoundError("credentials.json required for OAuth2")
 
-            print("Opening browser for Google OAuth2 authorization...")
+            logger.info("Opening browser for Google OAuth2 authorization...")
             flow = InstalledAppFlow.from_client_secrets_file(str(CREDENTIALS_FILE), SCOPES)
             creds = flow.run_local_server(port=0)
 
         # Save the credentials for next run
         with open(TOKEN_FILE, 'w') as token:
             token.write(creds.to_json())
-            print(f"Token saved to {TOKEN_FILE}")
+            logger.info(f"Token saved to {TOKEN_FILE}")
 
     return creds
 
@@ -91,11 +100,7 @@ def generate_oauth2_string(username, access_token):
 
 def connect_imap():
     """Connect to Gmail IMAP using OAuth2 authentication."""
-    print(
-        "{0} Connecting to mailbox via IMAP...".format(
-            datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-        )
-    )
+    logger.info("Connecting to mailbox via IMAP...")
 
     # Get OAuth2 credentials
     creds = get_oauth2_credentials()
@@ -127,38 +132,32 @@ def connect_imap():
     auth_string = generate_oauth2_string(username, creds.token)
     m.authenticate('XOAUTH2', lambda x: auth_string.encode())
 
-    print(f"Successfully authenticated as {username}")
+    logger.info(f"Successfully authenticated as {username}")
     return m
 
 
 def mark_read(m, folder, from_string):
     try:
-        no_of_msgs = int(
-            m.select(f'"{folder}"')[1][0]
-        )  # required to perform search, m.list() for all labels, '[Gmail]/Sent Mail'
-        # print("- Found a total of {1} messages in '{0}'.".format(folder, no_of_msgs))
+        m.select(f'"{folder}"')
 
-        # typ, data = m.search(None, '(FROM {0})'.format(from_string))  # search pointer for msgs
         typ, data = m.search(
             None, '(FROM "{0}" UNSEEN)'.format(from_string)
-        )  # search pointer for msgs
+        )
 
-        if data != [""]:  # if not empty list means messages exist
-            index_messages = data[0].split()
-            print(
-                "- Marked {0} messages read from {1} in '{2}'.".format(
-                    len(index_messages), from_string, folder
-                )
-            )
-            for i in index_messages:
-                m.store(i, "+FLAGS", "\Seen")  # mark as read
-                # m.store(i.replace(' ',','),'+FLAGS','\Seen') # mark as read
-            return len(index_messages)
+        if data[0]:
+            msg_ids = data[0].decode() if isinstance(data[0], bytes) else data[0]
+            count = len(msg_ids.split())
+            logger.info(f"Found {count} unread messages from {from_string}")
+            # Batch operation: comma-separated IDs
+            msg_set = msg_ids.replace(' ', ',')
+            m.store(msg_set, "+FLAGS", "\\Seen")
+            logger.info(f"Marked {count} messages as read from {from_string}")
+            return count
         else:
-            # print("- Nothing to mark read.")
-            return None
+            logger.debug(f"No unread messages from {from_string}")
+        return None
     except Exception as e:
-        print(e)
+        logger.error(f"Error processing {from_string}: {e}")
 
 
 def move_to_trash_before_date(m, folder, days_before):
@@ -189,37 +188,31 @@ def move_to_trash_before_date(m, folder, days_before):
 
         return
     except Exception as e:
-        print(e)
+        logger.error(f"Error in move_to_trash_before_date: {e}")
 
 
 def move_to_trash_from(m, folder, from_string):
     try:
-        no_of_msgs = int(
-            m.select(f'"{folder}"')[1][0]
-        )  # required to perform search, m.list() for all labels, '[Gmail]/Sent Mail'
-        # print("- Found a total of {1} messages in '{0}'.".format(folder, no_of_msgs))
+        m.select(f'"{folder}"')
 
-        # typ, data = m.search(None, '(FROM {0})'.format(from_string))  # search pointer for msgs
         typ, data = m.search(
             None, '(OR (TO "{0}") (FROM "{0}"))'.format(from_string)
-        )  # search pointer for msgs
+        )
 
-        if data != [""]:  # if not empty list means messages exist
-            index_messages_to_delete = data[0].split()
-            print(
-                "- Marked {0} messages for removal from {1} in '{2}'.".format(
-                    len(index_messages_to_delete), from_string, folder
-                )
-            )
-            for i in index_messages_to_delete:
-                m.store(i, "+X-GM-LABELS", "\\Trash")  # move to trash
-            # print("Deleted {0} messages.".format(no_msgs_del))
-            return len(index_messages_to_delete)
+        if data[0]:
+            msg_ids = data[0].decode() if isinstance(data[0], bytes) else data[0]
+            count = len(msg_ids.split())
+            logger.info(f"Found {count} messages matching {from_string}")
+            # Batch operation: comma-separated IDs
+            msg_set = msg_ids.replace(' ', ',')
+            m.store(msg_set, "+X-GM-LABELS", "\\Trash")
+            logger.info(f"Moved {count} messages to trash from {from_string}")
+            return count
         else:
-            # print("- Nothing to remove.")
-            return None
+            logger.debug(f"No messages matching {from_string}")
+        return None
     except Exception as e:
-        print(e)
+        logger.error(f"Error processing {from_string}: {e}")
 
 
 def empty_folder(m, folder, do_expunge=True):
@@ -233,14 +226,10 @@ def empty_folder(m, folder, do_expunge=True):
 
 
 def disconnect_imap(m):
-    print(
-        "{0} Done. Closing connection & logging out.".format(
-            datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
-        )
-    )
+    logger.info("Closing connection & logging out...")
     m.close()
     m.logout()
-    # print "All Done."
+    logger.info("Disconnected from IMAP")
     return
 
 
@@ -278,7 +267,7 @@ def get_sender_counts(m, folder, search_criteria="ALL", limit=50):
         total_count = len(msg_ids)
         sender_counter = Counter()
 
-        print(f"Analyzing {total_count} messages...")
+        logger.info(f"Analyzing {total_count} messages...")
 
         # Fetch headers for all messages (in batches for efficiency)
         batch_size = 500
@@ -299,12 +288,12 @@ def get_sender_counts(m, folder, search_criteria="ALL", limit=50):
                         sender_counter[sender] += 1
 
             if i + batch_size < len(msg_ids):
-                print(f"  Processed {i + batch_size}/{total_count}...")
+                logger.info(f"Processed {i + batch_size}/{total_count}...")
 
         # Return top senders
         return sender_counter.most_common(limit), total_count
     except Exception as e:
-        print(f"Error during analysis: {e}")
+        logger.error(f"Error during analysis: {e}")
         return [], 0
 
 
@@ -364,14 +353,48 @@ def run_cleanup(m_con, pool, config):
     for sender in config.get("mark_read_senders", []):
         pool.apply_async(mark_read, args=(m_con, folder, sender))
 
-    print(f"Queued {len(config.get('trash_senders', []))} trash rules")
-    print(f"Queued {len(config.get('mark_read_senders', []))} mark-read rules")
+    logger.info(f"Queued {len(config.get('trash_senders', []))} trash rules")
+    logger.info(f"Queued {len(config.get('mark_read_senders', []))} mark-read rules")
 
 
-def add_senders_from_results(results, config, list_type="trash_senders"):
-    """Let user select senders from analysis results to add to config."""
-    if not results:
-        print("No results to add from.")
+def filter_results_by_config(results, config):
+    """Filter out senders that are already in any config list."""
+    all_configured = set()
+    all_configured.update(config.get("trash_senders", []))
+    all_configured.update(config.get("mark_read_senders", []))
+    all_configured.update(config.get("exclude_senders", []))
+
+    filtered = [(sender, count) for sender, count in results if sender not in all_configured]
+    return filtered
+
+
+def print_filtered_results(results, config):
+    """Print results filtered by config, showing only unconfigured senders."""
+    filtered = filter_results_by_config(results, config)
+
+    if not filtered:
+        print("\nAll senders from the analysis are already in your config lists.")
+        return []
+
+    skipped = len(results) - len(filtered)
+    if skipped > 0:
+        print(f"\n(Hiding {skipped} senders already in your config)")
+
+    print("-" * 60)
+    print(f"{'#':<6}{'Count':<10}{'Sender'}")
+    print("-" * 60)
+
+    for i, (sender, count) in enumerate(filtered, 1):
+        display_sender = sender[:45] + "..." if len(sender) > 48 else sender
+        print(f"{i:<6}{count:<10}{display_sender}")
+
+    print("-" * 60)
+    return filtered
+
+
+def add_senders_from_results(filtered_results, config, list_type="trash_senders"):
+    """Let user select senders from filtered results to add to config."""
+    if not filtered_results:
         return False
 
     print("\nEnter numbers to add (comma-separated), 'all' for all, or 'none' to skip:")
@@ -384,7 +407,7 @@ def add_senders_from_results(results, config, list_type="trash_senders"):
 
     indices = set()
     if selection == "all":
-        indices = set(range(len(results)))
+        indices = set(range(len(filtered_results)))
     else:
         for part in selection.split(","):
             part = part.strip()
@@ -396,20 +419,13 @@ def add_senders_from_results(results, config, list_type="trash_senders"):
 
     added = 0
     target_list = config.get(list_type, [])
-    exclude_list = config.get("exclude_senders", [])
 
     for idx in sorted(indices):
-        if 0 <= idx < len(results):
-            sender = results[idx][0]
-            # Check if already in list or excluded
-            if sender in target_list:
-                print(f"  Already in list: {sender}")
-            elif sender in exclude_list:
-                print(f"  Excluded (protected): {sender}")
-            else:
-                target_list.append(sender)
-                added += 1
-                print(f"  Added: {sender}")
+        if 0 <= idx < len(filtered_results):
+            sender = filtered_results[idx][0]
+            target_list.append(sender)
+            added += 1
+            print(f"  Added: {sender}")
 
     config[list_type] = target_list
     if added > 0:
@@ -534,20 +550,20 @@ def run_analysis_with_add(m, config):
             print("3. Add to exclude (protect) list")
             print("4. Skip")
             add_choice = input("Choice: ").strip()
-            if add_choice == "1":
-                add_senders_from_results(results, config, "trash_senders")
-            elif add_choice == "2":
-                add_senders_from_results(results, config, "mark_read_senders")
-            elif add_choice == "3":
-                add_senders_from_results(results, config, "exclude_senders")
+            if add_choice in ("1", "2", "3"):
+                # Show filtered list (excludes senders already in any list)
+                filtered = print_filtered_results(results, config)
+                if filtered:
+                    list_map = {"1": "trash_senders", "2": "mark_read_senders", "3": "exclude_senders"}
+                    add_senders_from_results(filtered, config, list_map[add_choice])
 
 
 if __name__ == "__main__":
     # Load config
     config = load_config()
-    print(f"Loaded config: {len(config.get('trash_senders', []))} trash rules, "
-          f"{len(config.get('mark_read_senders', []))} mark-read rules, "
-          f"{len(config.get('exclude_senders', []))} excluded")
+    logger.info(f"Loaded config: {len(config.get('trash_senders', []))} trash rules, "
+                f"{len(config.get('mark_read_senders', []))} mark-read rules, "
+                f"{len(config.get('exclude_senders', []))} excluded")
 
     m_con = connect_imap()
 
@@ -570,7 +586,7 @@ if __name__ == "__main__":
             run_cleanup(m_con, pool, config)
             pool.close()
             pool.join()
-            print("\nCleanup complete!")
+            logger.info("Cleanup complete!")
         elif choice == "3":
             manage_rules(config)
         elif choice == "4":
