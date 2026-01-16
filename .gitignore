@@ -5,6 +5,3 @@
 # OAuth credentials
 credentials.json
 token.json
-
-# Personal cleanup config (contains email addresses)
-gmail_cleanup_config.json
