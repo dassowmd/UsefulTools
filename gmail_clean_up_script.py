@@ -4,7 +4,6 @@ import json
 import logging
 import re
 from collections import Counter
-from multiprocessing.pool import ThreadPool
 from pathlib import Path
 
 from google.auth.transport.requests import Request
@@ -27,23 +26,66 @@ CREDENTIALS_FILE = Path(__file__).parent / 'credentials.json'
 TOKEN_FILE = Path(__file__).parent / 'token.json'
 CONFIG_FILE = Path(__file__).parent / 'gmail_cleanup_config.json'
 
-# Default config structure
+# Default config structure (new format with metadata)
 DEFAULT_CONFIG = {
-    "trash_senders": [],      # Senders to move to trash
-    "mark_read_senders": [],  # Senders to mark as read
-    "exclude_senders": [],    # Senders to never touch (protection list)
+    "trash_rules": {},        # {sender: {added, last_ran, last_hit}}
+    "mark_read_rules": {},    # {sender: {added, last_ran, last_hit}}
+    "exclude_senders": [],    # Simple list - no tracking needed
 }
+
+# Minimum hours between running the same rule
+RULE_COOLDOWN_HOURS = 24
+
+
+def migrate_config(config):
+    """Migrate old list-based config to new dict-based format with metadata."""
+    migrated = False
+    now = datetime.datetime.now().isoformat()
+
+    # Migrate trash_senders -> trash_rules
+    if "trash_senders" in config and isinstance(config.get("trash_senders"), list):
+        config["trash_rules"] = {}
+        for sender in config["trash_senders"]:
+            config["trash_rules"][sender] = {
+                "added": now,
+                "last_ran": None,
+                "last_hit": None
+            }
+        del config["trash_senders"]
+        migrated = True
+
+    # Migrate mark_read_senders -> mark_read_rules
+    if "mark_read_senders" in config and isinstance(config.get("mark_read_senders"), list):
+        config["mark_read_rules"] = {}
+        for sender in config["mark_read_senders"]:
+            config["mark_read_rules"][sender] = {
+                "added": now,
+                "last_ran": None,
+                "last_hit": None
+            }
+        del config["mark_read_senders"]
+        migrated = True
+
+    # Ensure new keys exist
+    if "trash_rules" not in config:
+        config["trash_rules"] = {}
+    if "mark_read_rules" not in config:
+        config["mark_read_rules"] = {}
+    if "exclude_senders" not in config:
+        config["exclude_senders"] = []
+
+    return config, migrated
 
 
 def load_config():
-    """Load config from file, or create default if doesn't exist."""
+    """Load config from file, migrating if needed."""
     if CONFIG_FILE.exists():
         with open(CONFIG_FILE) as f:
             config = json.load(f)
-            # Ensure all keys exist (for backwards compatibility)
-            for key in DEFAULT_CONFIG:
-                if key not in config:
-                    config[key] = DEFAULT_CONFIG[key]
+            config, migrated = migrate_config(config)
+            if migrated:
+                logger.info("Migrated config to new format with metadata")
+                save_config(config)
             return config
     return DEFAULT_CONFIG.copy()
 
@@ -341,27 +383,75 @@ def print_analysis_report(results, total, title):
     print("-" * 60)
 
 
-def run_cleanup(m_con, pool, config):
-    """Run cleanup rules from config."""
+def should_run_rule(rule_meta):
+    """Check if a rule should run based on cooldown period."""
+    if not rule_meta.get("last_ran"):
+        return True
+
+    try:
+        last_ran = datetime.datetime.fromisoformat(rule_meta["last_ran"])
+        hours_since = (datetime.datetime.now() - last_ran).total_seconds() / 3600
+        return hours_since >= RULE_COOLDOWN_HOURS
+    except (ValueError, TypeError):
+        return True
+
+
+def run_cleanup(m_con, config):
+    """Run cleanup rules from config with cooldown and tracking."""
     folder = "[Gmail]/All Mail"
+    now = datetime.datetime.now().isoformat()
+
+    trash_rules = config.get("trash_rules", {})
+    mark_read_rules = config.get("mark_read_rules", {})
+
+    # Stats
+    ran_count = 0
+    skipped_count = 0
+    hit_count = 0
 
     # Move to trash
-    for sender in config.get("trash_senders", []):
-        pool.apply_async(move_to_trash_from, args=(m_con, folder, sender))
+    logger.info(f"Processing {len(trash_rules)} trash rules...")
+    for sender, meta in trash_rules.items():
+        if not should_run_rule(meta):
+            skipped_count += 1
+            logger.debug(f"Skipping {sender} (ran recently)")
+            continue
+
+        result = move_to_trash_from(m_con, folder, sender)
+        meta["last_ran"] = now
+        ran_count += 1
+
+        if result and result > 0:
+            meta["last_hit"] = now
+            hit_count += 1
 
     # Mark as read
-    for sender in config.get("mark_read_senders", []):
-        pool.apply_async(mark_read, args=(m_con, folder, sender))
+    logger.info(f"Processing {len(mark_read_rules)} mark-read rules...")
+    for sender, meta in mark_read_rules.items():
+        if not should_run_rule(meta):
+            skipped_count += 1
+            logger.debug(f"Skipping {sender} (ran recently)")
+            continue
 
-    logger.info(f"Queued {len(config.get('trash_senders', []))} trash rules")
-    logger.info(f"Queued {len(config.get('mark_read_senders', []))} mark-read rules")
+        result = mark_read(m_con, folder, sender)
+        meta["last_ran"] = now
+        ran_count += 1
+
+        if result and result > 0:
+            meta["last_hit"] = now
+            hit_count += 1
+
+    # Save updated metadata
+    save_config(config)
+
+    logger.info(f"Cleanup complete: {ran_count} rules ran, {skipped_count} skipped (cooldown), {hit_count} matched emails")
 
 
 def filter_results_by_config(results, config):
     """Filter out senders that are already in any config list."""
     all_configured = set()
-    all_configured.update(config.get("trash_senders", []))
-    all_configured.update(config.get("mark_read_senders", []))
+    all_configured.update(config.get("trash_rules", {}).keys())
+    all_configured.update(config.get("mark_read_rules", {}).keys())
     all_configured.update(config.get("exclude_senders", []))
 
     filtered = [(sender, count) for sender, count in results if sender not in all_configured]
@@ -392,7 +482,7 @@ def print_filtered_results(results, config):
     return filtered
 
 
-def add_senders_from_results(filtered_results, config, list_type="trash_senders"):
+def add_senders_from_results(filtered_results, config, list_type="trash_rules"):
     """Let user select senders from filtered results to add to config."""
     if not filtered_results:
         return False
@@ -418,20 +508,69 @@ def add_senders_from_results(filtered_results, config, list_type="trash_senders"
                 indices.add(int(part) - 1)
 
     added = 0
-    target_list = config.get(list_type, [])
+    now = datetime.datetime.now().isoformat()
 
-    for idx in sorted(indices):
-        if 0 <= idx < len(filtered_results):
-            sender = filtered_results[idx][0]
-            target_list.append(sender)
-            added += 1
-            print(f"  Added: {sender}")
+    # Handle exclude_senders as a simple list
+    if list_type == "exclude_senders":
+        target_list = config.get(list_type, [])
+        for idx in sorted(indices):
+            if 0 <= idx < len(filtered_results):
+                sender = filtered_results[idx][0]
+                target_list.append(sender)
+                added += 1
+                print(f"  Added: {sender}")
+        config[list_type] = target_list
+    else:
+        # Handle trash_rules and mark_read_rules as dicts with metadata
+        target_dict = config.get(list_type, {})
+        for idx in sorted(indices):
+            if 0 <= idx < len(filtered_results):
+                sender = filtered_results[idx][0]
+                target_dict[sender] = {
+                    "added": now,
+                    "last_ran": None,
+                    "last_hit": None
+                }
+                added += 1
+                print(f"  Added: {sender}")
+        config[list_type] = target_dict
 
-    config[list_type] = target_list
     if added > 0:
         save_config(config)
         print(f"\nAdded {added} sender(s) to {list_type}")
     return added > 0
+
+
+def format_date(iso_date):
+    """Format ISO date for display, or return 'Never' if None."""
+    if not iso_date:
+        return "Never"
+    try:
+        dt = datetime.datetime.fromisoformat(iso_date)
+        return dt.strftime("%Y-%m-%d %H:%M")
+    except (ValueError, TypeError):
+        return "Unknown"
+
+
+def print_rules_with_metadata(rules_dict, title):
+    """Print rules with their metadata."""
+    print(f"\n--- {title} ---")
+    if not rules_dict:
+        print("  (no rules)")
+        return []
+
+    print(f"{'#':<4} {'Sender':<40} {'Last Ran':<18} {'Last Hit':<18}")
+    print("-" * 82)
+
+    senders = list(rules_dict.keys())
+    for i, sender in enumerate(senders, 1):
+        meta = rules_dict[sender]
+        display_sender = sender[:38] + ".." if len(sender) > 40 else sender
+        last_ran = format_date(meta.get("last_ran"))
+        last_hit = format_date(meta.get("last_hit"))
+        print(f"{i:<4} {display_sender:<40} {last_ran:<18} {last_hit:<18}")
+
+    return senders
 
 
 def manage_rules(config):
@@ -440,8 +579,8 @@ def manage_rules(config):
         print("\n" + "="*60)
         print("MANAGE RULES")
         print("="*60)
-        print(f"Trash rules: {len(config.get('trash_senders', []))}")
-        print(f"Mark-read rules: {len(config.get('mark_read_senders', []))}")
+        print(f"Trash rules: {len(config.get('trash_rules', {}))}")
+        print(f"Mark-read rules: {len(config.get('mark_read_rules', {}))}")
         print(f"Excluded (protected): {len(config.get('exclude_senders', []))}")
         print("-"*60)
         print("1. View trash rules")
@@ -451,19 +590,16 @@ def manage_rules(config):
         print("5. Add sender to mark-read list")
         print("6. Add sender to exclude list")
         print("7. Remove sender from a list")
-        print("8. Return to main menu")
+        print("8. View stale rules (no hits in 90+ days)")
+        print("9. Return to main menu")
         print("-"*60)
 
-        choice = input("Select option (1-8): ").strip()
+        choice = input("Select option (1-9): ").strip()
 
         if choice == "1":
-            print("\n--- TRASH RULES ---")
-            for i, s in enumerate(config.get("trash_senders", []), 1):
-                print(f"{i}. {s}")
+            print_rules_with_metadata(config.get("trash_rules", {}), "TRASH RULES")
         elif choice == "2":
-            print("\n--- MARK-READ RULES ---")
-            for i, s in enumerate(config.get("mark_read_senders", []), 1):
-                print(f"{i}. {s}")
+            print_rules_with_metadata(config.get("mark_read_rules", {}), "MARK-READ RULES")
         elif choice == "3":
             print("\n--- EXCLUDED (PROTECTED) ---")
             for i, s in enumerate(config.get("exclude_senders", []), 1):
@@ -471,12 +607,18 @@ def manage_rules(config):
         elif choice == "4":
             sender = input("Enter sender/domain to trash: ").strip()
             if sender:
-                config.setdefault("trash_senders", []).append(sender)
+                now = datetime.datetime.now().isoformat()
+                config.setdefault("trash_rules", {})[sender] = {
+                    "added": now, "last_ran": None, "last_hit": None
+                }
                 save_config(config)
         elif choice == "5":
             sender = input("Enter sender to mark as read: ").strip()
             if sender:
-                config.setdefault("mark_read_senders", []).append(sender)
+                now = datetime.datetime.now().isoformat()
+                config.setdefault("mark_read_rules", {})[sender] = {
+                    "added": now, "last_ran": None, "last_hit": None
+                }
                 save_config(config)
         elif choice == "6":
             sender = input("Enter sender to protect (exclude): ").strip()
@@ -486,18 +628,56 @@ def manage_rules(config):
         elif choice == "7":
             print("Which list? (1=trash, 2=mark-read, 3=exclude)")
             list_choice = input("List: ").strip()
-            list_map = {"1": "trash_senders", "2": "mark_read_senders", "3": "exclude_senders"}
-            if list_choice in list_map:
-                list_name = list_map[list_choice]
-                items = config.get(list_name, [])
+            if list_choice == "1":
+                senders = print_rules_with_metadata(config.get("trash_rules", {}), "TRASH RULES")
+                if senders:
+                    idx = input("Enter number to remove: ").strip()
+                    if idx.isdigit() and 0 < int(idx) <= len(senders):
+                        removed = senders[int(idx) - 1]
+                        del config["trash_rules"][removed]
+                        save_config(config)
+                        print(f"Removed: {removed}")
+            elif list_choice == "2":
+                senders = print_rules_with_metadata(config.get("mark_read_rules", {}), "MARK-READ RULES")
+                if senders:
+                    idx = input("Enter number to remove: ").strip()
+                    if idx.isdigit() and 0 < int(idx) <= len(senders):
+                        removed = senders[int(idx) - 1]
+                        del config["mark_read_rules"][removed]
+                        save_config(config)
+                        print(f"Removed: {removed}")
+            elif list_choice == "3":
+                items = config.get("exclude_senders", [])
                 for i, s in enumerate(items, 1):
                     print(f"{i}. {s}")
-                idx = input("Enter number to remove: ").strip()
-                if idx.isdigit() and 0 < int(idx) <= len(items):
-                    removed = items.pop(int(idx) - 1)
-                    save_config(config)
-                    print(f"Removed: {removed}")
+                if items:
+                    idx = input("Enter number to remove: ").strip()
+                    if idx.isdigit() and 0 < int(idx) <= len(items):
+                        removed = items.pop(int(idx) - 1)
+                        save_config(config)
+                        print(f"Removed: {removed}")
         elif choice == "8":
+            # Find stale rules (no hits in 90+ days)
+            print("\n--- STALE RULES (no hits in 90+ days) ---")
+            stale_cutoff = datetime.datetime.now() - datetime.timedelta(days=90)
+            stale_count = 0
+            for rule_type in ["trash_rules", "mark_read_rules"]:
+                for sender, meta in config.get(rule_type, {}).items():
+                    last_hit = meta.get("last_hit")
+                    if not last_hit:
+                        print(f"  [{rule_type}] {sender} - Never hit")
+                        stale_count += 1
+                    else:
+                        try:
+                            hit_date = datetime.datetime.fromisoformat(last_hit)
+                            if hit_date < stale_cutoff:
+                                print(f"  [{rule_type}] {sender} - Last hit: {format_date(last_hit)}")
+                                stale_count += 1
+                        except (ValueError, TypeError):
+                            pass
+            if stale_count == 0:
+                print("  No stale rules found!")
+        elif choice == "9":
             break
 
 
@@ -554,15 +734,15 @@ def run_analysis_with_add(m, config):
                 # Show filtered list (excludes senders already in any list)
                 filtered = print_filtered_results(results, config)
                 if filtered:
-                    list_map = {"1": "trash_senders", "2": "mark_read_senders", "3": "exclude_senders"}
+                    list_map = {"1": "trash_rules", "2": "mark_read_rules", "3": "exclude_senders"}
                     add_senders_from_results(filtered, config, list_map[add_choice])
 
 
 if __name__ == "__main__":
     # Load config
     config = load_config()
-    logger.info(f"Loaded config: {len(config.get('trash_senders', []))} trash rules, "
-                f"{len(config.get('mark_read_senders', []))} mark-read rules, "
+    logger.info(f"Loaded config: {len(config.get('trash_rules', {}))} trash rules, "
+                f"{len(config.get('mark_read_rules', {}))} mark-read rules, "
                 f"{len(config.get('exclude_senders', []))} excluded")
 
     m_con = connect_imap()
@@ -582,11 +762,7 @@ if __name__ == "__main__":
         if choice == "1":
             run_analysis_with_add(m_con, config)
         elif choice == "2":
-            pool = ThreadPool(1)
-            run_cleanup(m_con, pool, config)
-            pool.close()
-            pool.join()
-            logger.info("Cleanup complete!")
+            run_cleanup(m_con, config)
         elif choice == "3":
             manage_rules(config)
         elif choice == "4":
