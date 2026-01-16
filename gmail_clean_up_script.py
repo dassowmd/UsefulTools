@@ -1,6 +1,8 @@
 import imaplib
 import datetime
 import json
+import re
+from collections import Counter
 from multiprocessing.pool import ThreadPool
 from pathlib import Path
 
@@ -14,6 +16,34 @@ SCOPES = ['https://mail.google.com/']
 # Path to OAuth credentials and token
 CREDENTIALS_FILE = Path(__file__).parent / 'credentials.json'
 TOKEN_FILE = Path(__file__).parent / 'token.json'
+CONFIG_FILE = Path(__file__).parent / 'gmail_cleanup_config.json'
+
+# Default config structure
+DEFAULT_CONFIG = {
+    "trash_senders": [],      # Senders to move to trash
+    "mark_read_senders": [],  # Senders to mark as read
+    "exclude_senders": [],    # Senders to never touch (protection list)
+}
+
+
+def load_config():
+    """Load config from file, or create default if doesn't exist."""
+    if CONFIG_FILE.exists():
+        with open(CONFIG_FILE) as f:
+            config = json.load(f)
+            # Ensure all keys exist (for backwards compatibility)
+            for key in DEFAULT_CONFIG:
+                if key not in config:
+                    config[key] = DEFAULT_CONFIG[key]
+            return config
+    return DEFAULT_CONFIG.copy()
+
+
+def save_config(config):
+    """Save config to file."""
+    with open(CONFIG_FILE, 'w') as f:
+        json.dump(config, f, indent=2)
+    print(f"Config saved to {CONFIG_FILE}")
 
 
 def get_oauth2_credentials():
@@ -214,501 +244,338 @@ def disconnect_imap(m):
     return
 
 
-if __name__ == "__main__":
-    pool = ThreadPool(1)
-    m_con = connect_imap()
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "@otta.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "@volumeone.org"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "@inbox.kaymbu.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "@kaymbu.com"),
-    )
-    pool.apply_async(
-        mark_read,
-        args=(m_con, "[Gmail]/All Mail", "do-not-reply@allegis-marketplace.com"),
-    )
-    pool.apply_async(
-        mark_read,
-        args=(m_con, "[Gmail]/All Mail", "do-not-reply@allegis-marketplace.com"),
-    )
-    pool.apply_async(mark_read, args=(m_con, "[Gmail]/All Mail", "venmo@venmo.com"))
-    pool.apply_async(mark_read, args=(m_con, "[Gmail]/All Mail", "jeff.sproul@rcu.org"))
-    pool.apply_async(
-        mark_read, args=(m_con, "[Gmail]/All Mail", "TimeAndExpense@allegisgroup.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "team@mint.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@indeed.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@linkedin.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "newsletter@techcrunch.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "capitalone@notification.capitalone.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "kaggle.intercom-mail.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "calendar-notification@google.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "vehiclediagnostics@onstar.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@spotify.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "subscriptions@subscriptions.usa.gov"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "email@et.npr.org")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "customerservice@emcom.bankofamerica.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "ebanking@bankpeoples.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "matthew.dassow@footlocker.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "USPSInformedDelivery@usps.gov"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "theskimm.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "engagesupport@daxkoengage.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "americanexpress@member.americanexpress.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "discover@service.discover.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@gowild.wi.gov")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "citicards@info4.citi.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "dave@ustvnow.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@covepointlodge.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(
-            m_con,
-            "[Gmail]/All Mail",
-            "empowerhernet@gmail.com via mailchimpapp.net",
-        ),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "goto@docker.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "HomeDepotCustomerCare@email.homedepot.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "mknowlan@aflag.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "no-reply@alertsp.chase.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "widnr@service.govdelivery.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "citicards@info6.citi.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(
-            m_con,
-            "[Gmail]/All Mail",
-            "wellsfargoretirementplans@retire1.wellsfargo.com",
-        ),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(
-            m_con,
-            "[Gmail]/All Mail",
-            "wellsfargoretirementplans@retire2.wellsfargo.com",
-        ),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "news@onxmaps.today")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "Yahoo@communications.yahoo.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "no-reply@email.homedepot.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "Atlassian@eastbay.com ")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "participant_services@eonline.e-vanguard.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "do-not-reply@stackoverflow.email"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "support@codewithmosh.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "gmb1983@gmail.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "support@github.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "partners@mail.outdoorlife.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "ParticipantServices@vanguard.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "EDELIVERY@ivyinvestments.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "noreply@statuspage.io")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "hello@news.gemini.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "discover@card-e.em.discover.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "no-reply@updates.coinbase.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "billpay@billpay.bankofamerica.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "Chase@e.chase.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "Travel.Wisconsin@public.govdelivery.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "aws-marketing-email-replies@amazon.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@milwaukeetool.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "focusinfo@focusonenergy.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "account@nest.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "noreply@mailer.bitbucket.org"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "discover@e.discover.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@sports.yahoo.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "myaccount@we-energies.com"),
-    )
-    pool.apply_async(move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "web@cex.io"))
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "ecards@123greetings.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@johnkasich.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@email.skype.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "noreply@email.kraken.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@atlassian.com")
-    )
-    pool.apply_async(move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "fitbit.com"))
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "email@messages.autotrader.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@datascience.smu.edu")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "homedepotdecor@email.homedepot.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@docker.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "hello@talkpython.fm")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "ambassador@anaconda.com ")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "team@kaggle.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@lake-link.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "email@mail.onedrive.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@northernresort.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "no-reply@dropboxmail.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@quantopian.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "paypal@mail.paypal.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "noreply@wisconsinpublicservice.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "connect@quandl.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@windscribe.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@twitter.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@messages.cargurus.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@namecheap.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@email.cbssports.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "wisconsinpublicservice@us.confirmit.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@mystubhub.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "AmericanExpress@welcome.aexp.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "help@walmart.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@mail.zillow.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "info@meetup.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@emails.chase.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "noreply@qemailserver.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "noreply@getipass.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "amazon-move@amazon.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "no-reply@mymove.com")
-    )
-    pool.apply_async(move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "siriusxm"))
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "noreply@robinhood.com")
-    )
-    pool.apply_async(move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "stitcher"))
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "camelcamelcamel")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@email.ticketmaster.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "no-reply@gdax.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "maillist.codeproject.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "cabelas@emails.cabelas.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "support@allclearid.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "upwork@e.upwork.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "@news.digitalocean.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(
-            m_con,
-            "[Gmail]/All Mail",
-            "Participant_Education@eonline.e-vanguard.com",
-        ),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "podcast@talkpython.fm")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "mailout@maillist.codeproject.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "editor@toptal.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "Kwikrewards@kwiktrip.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "digest-noreply@quora.com")
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "RANWW@northwestmatrixmail.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "newsletter@news.farmandfleet.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from,
-        args=(m_con, "[Gmail]/All Mail", "offers@your.offers.dominos.com"),
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "email@nl.npr.org")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "eTalk@bankpeoples.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "email@nl.npr.org")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "noreply@glassdoor.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "alert@indeed.com")
-    )
-    pool.apply_async(
-        move_to_trash_from, args=(m_con, "[Gmail]/All Mail", "surveys@google.com")
-    )
+# ============== Analysis Functions ==============
 
-    # Mark read
-    pool.apply_async(
-        mark_read, args=(m_con, "[Gmail]/All Mail", "support.allclearid@allclearid.com")
-    )
-    pool.apply_async(
-        mark_read,
-        args=(
-            m_con,
-            "[Gmail]/All Mail",
-            "ComputershareOnlineServices@cpucommunication.com",
-        ),
-    )
-    pool.apply_async(
-        mark_read,
-        args=(m_con, "[Gmail]/All Mail", "onlinebanking@ealerts.bankofamerica.com"),
-    )
-    pool.apply_async(
-        mark_read, args=(m_con, "[Gmail]/All Mail", "donotreply@upwork.com")
-    )
-    pool.apply_async(
-        mark_read,
-        args=(m_con, "[Gmail]/All Mail", "duluthtrading@duluthtradingemail.com"),
-    )
+def extract_email_address(from_header):
+    """Extract just the email address from a From header."""
+    if not from_header:
+        return "unknown"
+    # Try to find email in angle brackets first
+    match = re.search(r'<([^>]+)>', from_header)
+    if match:
+        return match.group(1).lower()
+    # Otherwise treat the whole thing as an email
+    return from_header.strip().lower()
 
-    # move_to_trash_before_date(m_con, '[Gmail]/All Mail', 365)  # inbox cleanup, before 1 yr
-    while True:
-        try:
-            from_string = input(
-                'Enter an email address you would like to have purged from All Mail inbox else type "stop" to end'
-            )
-            if from_string.lower() != "stop":
-                pool.apply_async(
-                    move_to_trash_from, args=(m_con, "[Gmail]/All Mail", from_string)
-                )
+
+def extract_domain(email_addr):
+    """Extract domain from an email address."""
+    if '@' in email_addr:
+        return email_addr.split('@')[1]
+    return email_addr
+
+
+def get_sender_counts(m, folder, search_criteria="ALL", limit=50):
+    """Fetch emails matching criteria and count by sender."""
+    try:
+        m.select(f'"{folder}"', readonly=True)
+        typ, data = m.search(None, search_criteria)
+
+        if data == [b''] or not data[0]:
+            return [], 0
+
+        msg_ids = data[0].split()
+        total_count = len(msg_ids)
+        sender_counter = Counter()
+
+        print(f"Analyzing {total_count} messages...")
+
+        # Fetch headers for all messages (in batches for efficiency)
+        batch_size = 500
+        for i in range(0, len(msg_ids), batch_size):
+            batch = msg_ids[i:i + batch_size]
+            msg_set = b','.join(batch)
+            typ, msg_data = m.fetch(msg_set, '(BODY.PEEK[HEADER.FIELDS (FROM)])')
+
+            for response_part in msg_data:
+                if isinstance(response_part, tuple):
+                    header_data = response_part[1]
+                    if isinstance(header_data, bytes):
+                        header_data = header_data.decode('utf-8', errors='ignore')
+                    # Parse the From header
+                    from_match = re.search(r'From:\s*(.+)', header_data, re.IGNORECASE)
+                    if from_match:
+                        sender = extract_email_address(from_match.group(1))
+                        sender_counter[sender] += 1
+
+            if i + batch_size < len(msg_ids):
+                print(f"  Processed {i + batch_size}/{total_count}...")
+
+        # Return top senders
+        return sender_counter.most_common(limit), total_count
+    except Exception as e:
+        print(f"Error during analysis: {e}")
+        return [], 0
+
+
+def analyze_top_senders(m, folder="[Gmail]/All Mail", limit=50):
+    """Analyze top senders by email volume."""
+    print(f"\n{'='*60}")
+    print("ANALYZING TOP SENDERS BY VOLUME")
+    print(f"{'='*60}")
+    results, total = get_sender_counts(m, folder, "ALL", limit)
+    return results, total
+
+
+def analyze_unread_by_sender(m, folder="[Gmail]/All Mail", limit=50):
+    """Analyze senders with most unread emails."""
+    print(f"\n{'='*60}")
+    print("ANALYZING UNREAD EMAILS BY SENDER")
+    print(f"{'='*60}")
+    results, total = get_sender_counts(m, folder, "UNSEEN", limit)
+    return results, total
+
+
+def analyze_old_emails(m, folder="[Gmail]/All Mail", days_threshold=365, limit=50):
+    """Analyze old emails by sender."""
+    print(f"\n{'='*60}")
+    print(f"ANALYZING EMAILS OLDER THAN {days_threshold} DAYS")
+    print(f"{'='*60}")
+    before_date = (datetime.date.today() - datetime.timedelta(days_threshold)).strftime("%d-%b-%Y")
+    results, total = get_sender_counts(m, folder, f"BEFORE {before_date}", limit)
+    return results, total
+
+
+def print_analysis_report(results, total, title):
+    """Print a formatted analysis report."""
+    print(f"\n{title}")
+    print(f"Total messages analyzed: {total}")
+    print("-" * 60)
+    print(f"{'Rank':<6}{'Count':<10}{'Sender'}")
+    print("-" * 60)
+
+    for i, (sender, count) in enumerate(results, 1):
+        # Truncate long sender addresses
+        display_sender = sender[:45] + "..." if len(sender) > 48 else sender
+        print(f"{i:<6}{count:<10}{display_sender}")
+
+    print("-" * 60)
+
+
+def run_cleanup(m_con, pool, config):
+    """Run cleanup rules from config."""
+    folder = "[Gmail]/All Mail"
+
+    # Move to trash
+    for sender in config.get("trash_senders", []):
+        pool.apply_async(move_to_trash_from, args=(m_con, folder, sender))
+
+    # Mark as read
+    for sender in config.get("mark_read_senders", []):
+        pool.apply_async(mark_read, args=(m_con, folder, sender))
+
+    print(f"Queued {len(config.get('trash_senders', []))} trash rules")
+    print(f"Queued {len(config.get('mark_read_senders', []))} mark-read rules")
+
+
+def add_senders_from_results(results, config, list_type="trash_senders"):
+    """Let user select senders from analysis results to add to config."""
+    if not results:
+        print("No results to add from.")
+        return False
+
+    print("\nEnter numbers to add (comma-separated), 'all' for all, or 'none' to skip:")
+    print("Example: 1,3,5 or 1-10 or all")
+
+    selection = input("Selection: ").strip().lower()
+
+    if selection == "none" or selection == "":
+        return False
+
+    indices = set()
+    if selection == "all":
+        indices = set(range(len(results)))
+    else:
+        for part in selection.split(","):
+            part = part.strip()
+            if "-" in part:
+                start, end = part.split("-")
+                indices.update(range(int(start) - 1, int(end)))
             else:
-                break
-        except Exception as e:
-            print(e)
+                indices.add(int(part) - 1)
 
-    pool.close()
-    pool.join()
+    added = 0
+    target_list = config.get(list_type, [])
+    exclude_list = config.get("exclude_senders", [])
 
-    # empty_folder(m_con, '[Gmail]/Trash', do_expunge=True)  # can send do_expunge=False, default True
+    for idx in sorted(indices):
+        if 0 <= idx < len(results):
+            sender = results[idx][0]
+            # Check if already in list or excluded
+            if sender in target_list:
+                print(f"  Already in list: {sender}")
+            elif sender in exclude_list:
+                print(f"  Excluded (protected): {sender}")
+            else:
+                target_list.append(sender)
+                added += 1
+                print(f"  Added: {sender}")
+
+    config[list_type] = target_list
+    if added > 0:
+        save_config(config)
+        print(f"\nAdded {added} sender(s) to {list_type}")
+    return added > 0
+
+
+def manage_rules(config):
+    """Menu for managing cleanup rules."""
+    while True:
+        print("\n" + "="*60)
+        print("MANAGE RULES")
+        print("="*60)
+        print(f"Trash rules: {len(config.get('trash_senders', []))}")
+        print(f"Mark-read rules: {len(config.get('mark_read_senders', []))}")
+        print(f"Excluded (protected): {len(config.get('exclude_senders', []))}")
+        print("-"*60)
+        print("1. View trash rules")
+        print("2. View mark-read rules")
+        print("3. View excluded senders")
+        print("4. Add sender to trash list")
+        print("5. Add sender to mark-read list")
+        print("6. Add sender to exclude list")
+        print("7. Remove sender from a list")
+        print("8. Return to main menu")
+        print("-"*60)
+
+        choice = input("Select option (1-8): ").strip()
+
+        if choice == "1":
+            print("\n--- TRASH RULES ---")
+            for i, s in enumerate(config.get("trash_senders", []), 1):
+                print(f"{i}. {s}")
+        elif choice == "2":
+            print("\n--- MARK-READ RULES ---")
+            for i, s in enumerate(config.get("mark_read_senders", []), 1):
+                print(f"{i}. {s}")
+        elif choice == "3":
+            print("\n--- EXCLUDED (PROTECTED) ---")
+            for i, s in enumerate(config.get("exclude_senders", []), 1):
+                print(f"{i}. {s}")
+        elif choice == "4":
+            sender = input("Enter sender/domain to trash: ").strip()
+            if sender:
+                config.setdefault("trash_senders", []).append(sender)
+                save_config(config)
+        elif choice == "5":
+            sender = input("Enter sender to mark as read: ").strip()
+            if sender:
+                config.setdefault("mark_read_senders", []).append(sender)
+                save_config(config)
+        elif choice == "6":
+            sender = input("Enter sender to protect (exclude): ").strip()
+            if sender:
+                config.setdefault("exclude_senders", []).append(sender)
+                save_config(config)
+        elif choice == "7":
+            print("Which list? (1=trash, 2=mark-read, 3=exclude)")
+            list_choice = input("List: ").strip()
+            list_map = {"1": "trash_senders", "2": "mark_read_senders", "3": "exclude_senders"}
+            if list_choice in list_map:
+                list_name = list_map[list_choice]
+                items = config.get(list_name, [])
+                for i, s in enumerate(items, 1):
+                    print(f"{i}. {s}")
+                idx = input("Enter number to remove: ").strip()
+                if idx.isdigit() and 0 < int(idx) <= len(items):
+                    removed = items.pop(int(idx) - 1)
+                    save_config(config)
+                    print(f"Removed: {removed}")
+        elif choice == "8":
+            break
+
+
+def run_analysis_with_add(m, config):
+    """Run analysis and offer to add results to config."""
+    folder = "[Gmail]/All Mail"
+
+    while True:
+        print("\n" + "="*60)
+        print("EMAIL ANALYSIS MENU")
+        print("="*60)
+        print("1. Top senders by volume")
+        print("2. Top senders of unread emails")
+        print("3. Top senders of old emails (>1 year)")
+        print("4. Run all analyses")
+        print("5. Return to main menu")
+        print("-"*60)
+
+        choice = input("Select analysis (1-5): ").strip()
+        results = None
+
+        if choice == "1":
+            results, total = analyze_top_senders(m, folder)
+            print_analysis_report(results, total, "TOP SENDERS BY VOLUME")
+        elif choice == "2":
+            results, total = analyze_unread_by_sender(m, folder)
+            print_analysis_report(results, total, "TOP SENDERS OF UNREAD EMAILS")
+        elif choice == "3":
+            results, total = analyze_old_emails(m, folder, days_threshold=365)
+            print_analysis_report(results, total, "TOP SENDERS OF OLD EMAILS (>1 YEAR)")
+        elif choice == "4":
+            results1, total1 = analyze_top_senders(m, folder)
+            print_analysis_report(results1, total1, "TOP SENDERS BY VOLUME")
+            results2, total2 = analyze_unread_by_sender(m, folder)
+            print_analysis_report(results2, total2, "TOP SENDERS OF UNREAD EMAILS")
+            results3, total3 = analyze_old_emails(m, folder, days_threshold=365)
+            print_analysis_report(results3, total3, "TOP SENDERS OF OLD EMAILS (>1 YEAR)")
+            results = None  # Don't prompt for combined
+        elif choice == "5":
+            break
+        else:
+            print("Invalid choice. Please select 1-5.")
+            continue
+
+        # Offer to add results to config
+        if results:
+            print("\nAdd senders to cleanup rules?")
+            print("1. Add to trash list")
+            print("2. Add to mark-read list")
+            print("3. Add to exclude (protect) list")
+            print("4. Skip")
+            add_choice = input("Choice: ").strip()
+            if add_choice == "1":
+                add_senders_from_results(results, config, "trash_senders")
+            elif add_choice == "2":
+                add_senders_from_results(results, config, "mark_read_senders")
+            elif add_choice == "3":
+                add_senders_from_results(results, config, "exclude_senders")
+
+
+if __name__ == "__main__":
+    # Load config
+    config = load_config()
+    print(f"Loaded config: {len(config.get('trash_senders', []))} trash rules, "
+          f"{len(config.get('mark_read_senders', []))} mark-read rules, "
+          f"{len(config.get('exclude_senders', []))} excluded")
+
+    m_con = connect_imap()
+
+    while True:
+        print("\n" + "="*60)
+        print("GMAIL CLEANUP TOOL")
+        print("="*60)
+        print("1. Analyze emails (find cleanup candidates)")
+        print("2. Run cleanup (execute rules from config)")
+        print("3. Manage rules")
+        print("4. Exit")
+        print("-"*60)
+
+        choice = input("Select option (1-4): ").strip()
+
+        if choice == "1":
+            run_analysis_with_add(m_con, config)
+        elif choice == "2":
+            pool = ThreadPool(1)
+            run_cleanup(m_con, pool, config)
+            pool.close()
+            pool.join()
+            print("\nCleanup complete!")
+        elif choice == "3":
+            manage_rules(config)
+        elif choice == "4":
+            break
+        else:
+            print("Invalid choice. Please select 1-4.")
 
     disconnect_imap(m_con)
