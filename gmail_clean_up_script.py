@@ -1,22 +1,103 @@
-import getpass
 import imaplib
 import datetime
+import json
 from multiprocessing.pool import ThreadPool
+from pathlib import Path
+
+from google.auth.transport.requests import Request
+from google.oauth2.credentials import Credentials
+from google_auth_oauthlib.flow import InstalledAppFlow
+
+# Gmail IMAP OAuth2 scope - full mailbox access
+SCOPES = ['https://mail.google.com/']
+
+# Path to OAuth credentials and token
+CREDENTIALS_FILE = Path(__file__).parent / 'credentials.json'
+TOKEN_FILE = Path(__file__).parent / 'token.json'
+
+
+def get_oauth2_credentials():
+    """Get OAuth2 credentials, refreshing or creating new ones as needed."""
+    creds = None
+
+    # Load existing token if available
+    if TOKEN_FILE.exists():
+        creds = Credentials.from_authorized_user_file(str(TOKEN_FILE), SCOPES)
+
+    # If no valid credentials, get new ones
+    if not creds or not creds.valid:
+        if creds and creds.expired and creds.refresh_token:
+            print("Refreshing OAuth2 token...")
+            creds.refresh(Request())
+        else:
+            if not CREDENTIALS_FILE.exists():
+                print(f"ERROR: {CREDENTIALS_FILE} not found!")
+                print("\nTo set up OAuth2 authentication:")
+                print("1. Go to https://console.cloud.google.com/")
+                print("2. Create a new project (or select existing)")
+                print("3. Enable the Gmail API")
+                print("4. Go to APIs & Services > Credentials")
+                print("5. Create OAuth 2.0 Client ID (Desktop app)")
+                print("6. Download the JSON and save as 'credentials.json' in this folder")
+                raise FileNotFoundError("credentials.json required for OAuth2")
+
+            print("Opening browser for Google OAuth2 authorization...")
+            flow = InstalledAppFlow.from_client_secrets_file(str(CREDENTIALS_FILE), SCOPES)
+            creds = flow.run_local_server(port=0)
+
+        # Save the credentials for next run
+        with open(TOKEN_FILE, 'w') as token:
+            token.write(creds.to_json())
+            print(f"Token saved to {TOKEN_FILE}")
+
+    return creds
+
+
+def generate_oauth2_string(username, access_token):
+    """Generate XOAUTH2 authentication string for IMAP."""
+    auth_string = f"user={username}\x01auth=Bearer {access_token}\x01\x01"
+    return auth_string
 
 
 def connect_imap():
-    m = imaplib.IMAP4_SSL("imap.gmail.com")  # server to connect to
+    """Connect to Gmail IMAP using OAuth2 authentication."""
     print(
         "{0} Connecting to mailbox via IMAP...".format(
             datetime.datetime.today().strftime("%Y-%m-%d %H:%M:%S")
         )
     )
-    username = input("Please enter your Gmail user name")
-    pw = getpass.getpass("Password or hit enter to use saved password")
-    if len(pw) == 0:
-        pw = 'wzbvyiroygehepft'
-    m.login(username, pw)
 
+    # Get OAuth2 credentials
+    creds = get_oauth2_credentials()
+
+    # Get the email address from the token info
+    # User needs to provide their email since it's not in the credentials
+    if TOKEN_FILE.exists():
+        with open(TOKEN_FILE) as f:
+            token_data = json.load(f)
+            # Try to get email from token, otherwise ask
+            username = token_data.get('_email')
+    else:
+        username = None
+
+    if not username:
+        username = input("Enter your Gmail address: ")
+        # Save the email to token file for future use
+        if TOKEN_FILE.exists():
+            with open(TOKEN_FILE) as f:
+                token_data = json.load(f)
+            token_data['_email'] = username
+            with open(TOKEN_FILE, 'w') as f:
+                json.dump(token_data, f)
+
+    # Connect to Gmail IMAP
+    m = imaplib.IMAP4_SSL("imap.gmail.com")
+
+    # Authenticate using XOAUTH2
+    auth_string = generate_oauth2_string(username, creds.token)
+    m.authenticate('XOAUTH2', lambda x: auth_string.encode())
+
+    print(f"Successfully authenticated as {username}")
     return m
 
 
