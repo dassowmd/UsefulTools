@@ -26,15 +26,35 @@ For development (adds pytest, black, mypy):
 pip install -e ".[dev]"
 ```
 
+## Getting a Lob API Key
+
+1. **Create an account** at [lob.com](https://www.lob.com/) (no credit card required)
+2. **Verify your email** — live keys will not work until this is done
+3. **Add a payment method** at [Dashboard > Settings > Billing](https://dashboard.lob.com/settings/billing) — required for live key access, even on the free tier
+4. **Copy your API key** from [Dashboard > Settings > API Keys](https://dashboard.lob.com/settings/api-keys)
+
+### Test vs Live keys
+
+| Key type | Prefix | Behavior |
+|----------|--------|----------|
+| **Test** | `test_` | Returns dummy data, no charges, good for development |
+| **Live** | `live_` | Real verification against USPS data, counts toward quota |
+
+The free Developer plan includes **300 US verifications/month** at no cost. See [Lob's pricing](https://www.lob.com/pricing/address-verification) for details.
+
+### Test environment
+
+With a test key, the API requires specific magic values to simulate responses. Set `primary_line` to one of: `deliverable`, `deliverable_unnecessary_unit`, `deliverable_incorrect_unit`, `deliverable_missing_unit`, or `undeliverable`, and `zip_code` to `11111`. See [Lob's test environment docs](https://docs.lob.com/#tag/US-Verifications/Testing) for the full list.
+
 ## Configuration
 
-Set your Lob API key as an environment variable:
+Set your API key as an environment variable:
 
 ```bash
 export LOB_API_KEY="your_lob_api_key"
 ```
 
-Or pass it directly when creating a client. Lob's free Developer plan includes 300 US verifications/month at no cost. Test API keys (prefixed `test_`) return dummy data and are useful for development.
+Or pass it directly via `--api-key` on the CLI, or as a parameter when creating a client.
 
 ## Usage
 
