@@ -4,7 +4,7 @@
 
     store = DriveStore(root_id="1AbC...", app="my_project")
     store.upload("local/data.csv", "inputs/data.csv")
-    df = store.read_csv("outputs/results.csv")
+    store.download("outputs/results.csv", "./results.csv")
 """
 
 from .auth import (

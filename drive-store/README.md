@@ -8,8 +8,7 @@ from drive_store import DriveStore
 store = DriveStore(root_id="1AbC...", app="my_project")
 
 store.upload("local/data.geojson", "inputs/data.geojson")
-df   = store.read_csv("outputs/results.csv")
-gdf  = store.read_geojson("inputs/data.geojson")
+store.download("outputs/results.csv", "./results.csv")
 
 store.push("./outdir", "outputs")     # dir upload, skips unchanged by md5
 store.pull("outputs", "./outdir")
@@ -19,10 +18,23 @@ store.snapshot("outputs")             # server-side copy under snapshots/<ts>/
 ## Install
 
 ```bash
-pip install -e .            # core
-pip install -e '.[pandas]'  # read_csv / write_csv / parquet
-pip install -e '.[geo]'     # read_geojson / write_geojson
+pip install -e .
 ```
+
+No optional extras. The only dependencies are the three Google API packages.
+
+This library moves bytes; it takes no position on serialization. There are no
+DataFrame helpers — if you want one, you already have pandas:
+
+```python
+import io, pandas as pd
+
+df = pd.read_csv(io.BytesIO(store.read_bytes("outputs/results.csv")))
+store.write_bytes(df.to_csv(index=False).encode(), "outputs/results.csv")
+```
+
+`read_json`/`write_json` are the exception, since `json` is stdlib and costs
+nothing.
 
 ## Auth
 

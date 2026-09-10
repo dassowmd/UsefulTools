@@ -7,7 +7,7 @@ Intermediate folders are created on write.
 
     store = DriveStore(root_id="1AbC...", app="my_project")
     store.upload("local/data.geojson", "inputs/data.geojson")
-    df = store.read_csv("outputs/results.csv")
+    store.download("outputs/results.csv", "./results.csv")
 
 Drive allows several files to share a name inside one folder. Every write here
 is an *upsert* — it looks for an existing file with that name and updates it in
@@ -393,41 +393,14 @@ class DriveStore:
         logger.info("Trashed drive://%s", remote_path)
         return True
 
-    # ── dataframe / structured helpers ────────────────────────────────────
-
-    def write_csv(self, df, remote_path: str, **to_csv_kwargs) -> DriveFile:
-        to_csv_kwargs.setdefault("index", False)
-        return self.write_bytes(
-            df.to_csv(**to_csv_kwargs).encode("utf-8"), remote_path, "text/csv"
-        )
-
-    def read_csv(self, remote_path: str, **read_csv_kwargs):
-        import pandas as pd
-
-        return pd.read_csv(io.BytesIO(self.read_bytes(remote_path)), **read_csv_kwargs)
-
-    def write_parquet(self, df, remote_path: str, **kwargs) -> DriveFile:
-        buf = io.BytesIO()
-        df.to_parquet(buf, **kwargs)
-        return self.write_bytes(buf.getvalue(), remote_path, "application/octet-stream")
-
-    def read_parquet(self, remote_path: str, **kwargs):
-        import pandas as pd
-
-        return pd.read_parquet(io.BytesIO(self.read_bytes(remote_path)), **kwargs)
-
-    def write_geojson(self, gdf, remote_path: str) -> DriveFile:
-        """Write a GeoDataFrame, reprojecting to EPSG:4326 (GeoJSON's CRS)."""
-        if gdf.crs is not None and gdf.crs.to_epsg() != 4326:
-            gdf = gdf.to_crs("EPSG:4326")
-        return self.write_bytes(
-            gdf.to_json().encode("utf-8"), remote_path, "application/geo+json"
-        )
-
-    def read_geojson(self, remote_path: str):
-        import geopandas as gpd
-
-        return gpd.read_file(io.BytesIO(self.read_bytes(remote_path)))
+    # ── json ──────────────────────────────────────────────────────────────
+    # Deliberately the only structured-format helpers here: json is stdlib, so
+    # it adds no dependency. DataFrame/GeoDataFrame conveniences were removed
+    # on purpose — a file store shouldn't take a hard line on serialization
+    # libraries, and callers already have pandas if they need it:
+    #
+    #     df = pd.read_csv(io.BytesIO(store.read_bytes("outputs/x.csv")))
+    #     store.write_bytes(df.to_csv(index=False).encode(), "outputs/x.csv")
 
     def write_json(self, obj, remote_path: str, indent: int = 2) -> DriveFile:
         import json
