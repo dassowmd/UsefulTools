@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "drive-store"
+version = "0.1.0"
+description = "Use a Google Drive folder as a file store"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "google-api-python-client>=2.100.0",
+    "google-auth>=2.23.0",
+    "google-auth-oauthlib>=1.1.0",
+]
+
+[project.optional-dependencies]
+pandas = [
+    "pandas>=2.0.0",
+]
+geo = [
+    "geopandas>=0.14.0",
+]
+dev = [
+    "pytest>=7.4.0",
+    "black>=23.7.0",
+]
+
+[project.scripts]
+drive-store = "drive_store.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/drive_store"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/drive_store", "README.md", "tests"]
