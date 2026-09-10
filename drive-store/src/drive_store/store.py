@@ -393,29 +393,6 @@ class DriveStore:
         logger.info("Trashed drive://%s", remote_path)
         return True
 
-    # ── json ──────────────────────────────────────────────────────────────
-    # Deliberately the only structured-format helpers here: json is stdlib, so
-    # it adds no dependency. DataFrame/GeoDataFrame conveniences were removed
-    # on purpose — a file store shouldn't take a hard line on serialization
-    # libraries, and callers already have pandas if they need it:
-    #
-    #     df = pd.read_csv(io.BytesIO(store.read_bytes("outputs/x.csv")))
-    #     store.write_bytes(df.to_csv(index=False).encode(), "outputs/x.csv")
-
-    def write_json(self, obj, remote_path: str, indent: int = 2) -> DriveFile:
-        import json
-
-        return self.write_bytes(
-            json.dumps(obj, indent=indent, default=str).encode("utf-8"),
-            remote_path,
-            "application/json",
-        )
-
-    def read_json(self, remote_path: str):
-        import json
-
-        return json.loads(self.read_bytes(remote_path))
-
     # ── bulk sync ─────────────────────────────────────────────────────────
 
     def push(

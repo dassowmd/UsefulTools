@@ -23,18 +23,18 @@ pip install -e .
 
 No optional extras. The only dependencies are the three Google API packages.
 
-This library moves bytes; it takes no position on serialization. There are no
-DataFrame helpers — if you want one, you already have pandas:
+This library moves bytes and takes no position on serialization — no CSV,
+Parquet, GeoJSON, or JSON helpers. Decoding belongs to the application that
+knows what the bytes mean:
 
 ```python
-import io, pandas as pd
+import io, json, pandas as pd
 
-df = pd.read_csv(io.BytesIO(store.read_bytes("outputs/results.csv")))
+df  = pd.read_csv(io.BytesIO(store.read_bytes("outputs/results.csv")))
+cfg = json.loads(store.read_bytes("config.json"))
+
 store.write_bytes(df.to_csv(index=False).encode(), "outputs/results.csv")
 ```
-
-`read_json`/`write_json` are the exception, since `json` is stdlib and costs
-nothing.
 
 ## Auth
 
