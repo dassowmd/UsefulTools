@@ -219,7 +219,6 @@ class TemplateListResponse(BaseModel):
 
 class CreateRuleFromTemplateRequest(BaseModel):
     """Request to create rule from template."""
-    template_id: str
     customizations: Dict[str, Any] = Field(default_factory=dict)
 
 
