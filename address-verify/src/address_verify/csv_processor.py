@@ -5,10 +5,10 @@ from __future__ import annotations
 import csv
 import sys
 from pathlib import Path
-from typing import Callable, Dict, Optional
+from typing import Callable, Dict, Optional, Tuple, Union
 
 from .client import AddressVerifier
-from .models import USAddress
+from .models import USAddress, VerificationResult
 
 
 # Default column mapping matching the original verify.py indices:
@@ -22,6 +22,18 @@ DEFAULT_COLUMN_MAPPING: Dict[str, str] = {
 }
 
 
+def _address_cache_key(address: USAddress) -> str:
+    """Build a normalized cache key from an address for deduplication."""
+    parts = [
+        (address.primary_line or "").strip().lower(),
+        (address.secondary_line or "").strip().lower(),
+        (address.city or "").strip().lower(),
+        (address.state or "").strip().lower(),
+        (address.zip_code or "").strip().lower(),
+    ]
+    return "|".join(parts)
+
+
 def process_csv(
     input_path: str | Path,
     verified_path: str | Path,
@@ -32,6 +44,10 @@ def process_csv(
     progress_callback: Optional[Callable[[int, int], None]] = None,
 ) -> Dict[str, int]:
     """Read addresses from a CSV, verify each one, and write results.
+
+    Duplicate addresses (same primary_line, city, state, zip after
+    normalization) are verified once and the cached result is reused
+    for subsequent rows — saving API calls and cost.
 
     Args:
         input_path: Path to the input CSV file.
@@ -45,7 +61,8 @@ def process_csv(
             called after each row is processed.
 
     Returns:
-        Dict with counts: ``{"verified": N, "errors": N, "total": N}``.
+        Dict with counts: ``{"verified": N, "errors": N, "total": N,
+        "duplicates": N}``.
     """
     input_path = Path(input_path)
     verified_path = Path(verified_path)
@@ -62,6 +79,11 @@ def process_csv(
 
     verified_count = 0
     error_count = 0
+    duplicate_count = 0
+
+    # Cache: address key -> (result, error_message)
+    # result is a VerificationResult on success, None on error
+    cache: Dict[str, Tuple[Optional[VerificationResult], Optional[str]]] = {}
 
     with (
         open(input_path, newline="", encoding="utf-8") as infile,
@@ -103,7 +125,31 @@ def process_csv(
                     address = _row_list_to_address(row, mapping)
                     row_values = list(row)
 
+                key = _address_cache_key(address)
+
+                if key in cache:
+                    cached_result, cached_error = cache[key]
+                    duplicate_count += 1
+                    if cached_result is not None:
+                        v_writer.writerow(
+                            row_values
+                            + [
+                                cached_result.deliverability,
+                                cached_result.primary_line,
+                                cached_result.secondary_line,
+                                cached_result.last_line,
+                            ]
+                        )
+                        verified_count += 1
+                    else:
+                        e_writer.writerow(
+                            row_values + [cached_error or "duplicate of failed address"]
+                        )
+                        error_count += 1
+                    continue
+
                 result = verifier.verify_us(address)
+                cache[key] = (result, None)
                 v_writer.writerow(
                     row_values
                     + [
@@ -121,16 +167,25 @@ def process_csv(
                 else:
                     assert isinstance(row, list)
                     row_values = list(row)
+                # Cache the error so duplicate addresses don't retry
+                try:
+                    key = _address_cache_key(address)  # type: ignore[possibly-undefined]
+                    cache[key] = (None, str(e))
+                except Exception:
+                    pass
                 e_writer.writerow(row_values + [str(e)])
                 error_count += 1
 
     sys.stdout.write("\n")
+    if duplicate_count > 0:
+        print(f"  Skipped {duplicate_count} duplicate address(es) (cached)")
     verifier.close()
 
     return {
         "verified": verified_count,
         "errors": error_count,
         "total": verified_count + error_count,
+        "duplicates": duplicate_count,
     }
 
 
@@ -148,7 +203,7 @@ def _row_dict_to_address(
 
 
 def _row_list_to_address(
-    row: list, mapping: Dict[str, int | str]
+    row: list, mapping: Dict[str, Union[int, str]]
 ) -> USAddress:
     """Build a USAddress from a csv.reader list row using index mapping."""
     def _get(key: str) -> str:
