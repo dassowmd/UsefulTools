@@ -5,3 +5,7 @@
 # OAuth credentials
 credentials.json
 token.json
+# OS / Python artifacts
+.DS_Store
+__pycache__/
+.pytest_cache/

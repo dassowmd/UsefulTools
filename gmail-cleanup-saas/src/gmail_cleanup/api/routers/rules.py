@@ -327,9 +327,9 @@ async def list_templates(
 @router.post("/templates/{template_id}", response_model=RuleResponse, status_code=status.HTTP_201_CREATED)
 async def create_rule_from_template(
     template_id: str,
-    request: CreateRuleFromTemplateRequest = None,
     rules_engine: RulesEngine = Depends(get_authenticated_rules_engine),
-    current_user: dict = Depends(get_current_user)
+    current_user: dict = Depends(get_current_user),
+    request: CreateRuleFromTemplateRequest = None
 ):
     """Create a rule from a template."""
     try:

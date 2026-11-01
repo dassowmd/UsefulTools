@@ -163,7 +163,7 @@ class EmailProcessor:
         
         try:
             # Build search query from rule criteria
-            query = self._build_search_query(rule)
+            query = self.rules_engine.build_gmail_query(rule.criteria)
             logger.debug(f"Search query for rule '{rule.name}': {query}")
             
             # Search for matching messages
@@ -274,30 +274,6 @@ class EmailProcessor:
             return all_messages[:max_results] if max_results else all_messages
         
         return await loop.run_in_executor(self.executor, _search)
-    
-    def _build_search_query(self, rule: Rule) -> str:
-        """Build Gmail search query from rule criteria.
-        
-        Args:
-            rule: Rule containing search criteria
-            
-        Returns:
-            Gmail search query string
-        """
-        criteria = rule.criteria
-        
-        return self.gmail_client.build_search_query(
-            sender=criteria.get('from'),
-            recipient=criteria.get('to'),
-            subject=criteria.get('subject'),
-            has_words=criteria.get('has_words'),
-            exclude_words=criteria.get('exclude_words'),
-            older_than_days=criteria.get('older_than_days'),
-            newer_than_days=criteria.get('newer_than_days'),
-            is_unread=criteria.get('is_unread'),
-            has_attachment=criteria.get('has_attachment'),
-            labels=criteria.get('labels')
-        )
     
     async def _apply_rule_action(
         self,

@@ -1,192 +1,3920 @@
 {
-  "trash_senders": [
-    "@otta.com",
-    "@volumeone.org",
-    "@inbox.kaymbu.com",
-    "@kaymbu.com",
-    "team@mint.com",
-    "@indeed.com",
-    "@linkedin.com",
-    "newsletter@techcrunch.com",
-    "capitalone@notification.capitalone.com",
-    "kaggle.intercom-mail.com",
-    "calendar-notification@google.com",
-    "vehiclediagnostics@onstar.com",
-    "@spotify.com",
-    "subscriptions@subscriptions.usa.gov",
-    "email@et.npr.org",
-    "customerservice@emcom.bankofamerica.com",
-    "ebanking@bankpeoples.com",
-    "matthew.dassow@footlocker.com",
-    "USPSInformedDelivery@usps.gov",
-    "theskimm.com",
-    "engagesupport@daxkoengage.com",
-    "americanexpress@member.americanexpress.com",
-    "discover@service.discover.com",
-    "@gowild.wi.gov",
-    "citicards@info4.citi.com",
-    "dave@ustvnow.com",
-    "@covepointlodge.com",
-    "empowerhernet@gmail.com via mailchimpapp.net",
-    "goto@docker.com",
-    "HomeDepotCustomerCare@email.homedepot.com",
-    "mknowlan@aflag.com",
-    "no-reply@alertsp.chase.com",
-    "widnr@service.govdelivery.com",
-    "citicards@info6.citi.com",
-    "wellsfargoretirementplans@retire1.wellsfargo.com",
-    "wellsfargoretirementplans@retire2.wellsfargo.com",
-    "news@onxmaps.today",
-    "Yahoo@communications.yahoo.com",
-    "no-reply@email.homedepot.com",
-    "Atlassian@eastbay.com",
-    "participant_services@eonline.e-vanguard.com",
-    "do-not-reply@stackoverflow.email",
-    "support@codewithmosh.com",
-    "support@github.com",
-    "partners@mail.outdoorlife.com",
-    "ParticipantServices@vanguard.com",
-    "EDELIVERY@ivyinvestments.com",
-    "noreply@statuspage.io",
-    "hello@news.gemini.com",
-    "discover@card-e.em.discover.com",
-    "no-reply@updates.coinbase.com",
-    "billpay@billpay.bankofamerica.com",
-    "Chase@e.chase.com",
-    "Travel.Wisconsin@public.govdelivery.com",
-    "aws-marketing-email-replies@amazon.com",
-    "@milwaukeetool.com",
-    "focusinfo@focusonenergy.com",
-    "account@nest.com",
-    "noreply@mailer.bitbucket.org",
-    "discover@e.discover.com",
-    "@sports.yahoo.com",
-    "myaccount@we-energies.com",
-    "web@cex.io",
-    "ecards@123greetings.com",
-    "@johnkasich.com",
-    "@email.skype.com",
-    "noreply@email.kraken.com",
-    "@atlassian.com",
-    "fitbit.com",
-    "email@messages.autotrader.com",
-    "@datascience.smu.edu",
-    "homedepotdecor@email.homedepot.com",
-    "@docker.com",
-    "hello@talkpython.fm",
-    "ambassador@anaconda.com",
-    "team@kaggle.com",
-    "@lake-link.com",
-    "email@mail.onedrive.com",
-    "@northernresort.com",
-    "no-reply@dropboxmail.com",
-    "@quantopian.com",
-    "paypal@mail.paypal.com",
-    "noreply@wisconsinpublicservice.com",
-    "connect@quandl.com",
-    "@windscribe.com",
-    "@twitter.com",
-    "@messages.cargurus.com",
-    "@namecheap.com",
-    "@email.cbssports.com",
-    "wisconsinpublicservice@us.confirmit.com",
-    "@mystubhub.com",
-    "AmericanExpress@welcome.aexp.com",
-    "help@walmart.com",
-    "@mail.zillow.com",
-    "info@meetup.com",
-    "@emails.chase.com",
-    "noreply@qemailserver.com",
-    "noreply@getipass.com",
-    "amazon-move@amazon.com",
-    "no-reply@mymove.com",
-    "siriusxm",
-    "noreply@robinhood.com",
-    "stitcher",
-    "camelcamelcamel",
-    "@email.ticketmaster.com",
-    "no-reply@gdax.com",
-    "maillist.codeproject.com",
-    "cabelas@emails.cabelas.com",
-    "support@allclearid.com",
-    "upwork@e.upwork.com",
-    "@news.digitalocean.com",
-    "Participant_Education@eonline.e-vanguard.com",
-    "podcast@talkpython.fm",
-    "mailout@maillist.codeproject.com",
-    "editor@toptal.com",
-    "Kwikrewards@kwiktrip.com",
-    "digest-noreply@quora.com",
-    "RANWW@northwestmatrixmail.com",
-    "newsletter@news.farmandfleet.com",
-    "offers@your.offers.dominos.com",
-    "email@nl.npr.org",
-    "eTalk@bankpeoples.com",
-    "noreply@glassdoor.com",
-    "alert@indeed.com",
-    "surveys@google.com",
-    "micolika@uwec.edu",
-    "alert@email4-beyond.com",
-    "venmo@venmo.com",
-    "info@strikerbrands.com",
-    "info@email.meetup.com",
-    "gonefishing@thecoffeegrounds.com",
-    "auto-confirm@amazon.com",
-    "shipment-tracking@amazon.com",
-    "hello@gemini.com",
-    "info@upnorthnewswi.com",
-    "member_services@rcu.org",
-    "matthew.dassow@mercmarine.com",
-    "friskyminsk@gmail.com",
-    "info@visiteauclaire.com",
-    "ebay@ebay.com",
-    "discover@services.discover.com",
-    "homedepotreceipt@homedepot.com",
-    "no-reply@accounts.google.com",
-    "coenlm@uwec.edu",
-    "myaccount@spectrumemails.com",
-    "dccc@dccc.org",
-    "servicing@wheda.com",
-    "noreply@account.xcelenergy.com",
-    "the democratic national committee via mobilize",
-    "no.reply.alerts@chase.com",
-    "support@sagepeople.com",
-    "fidelity.investments@mail.fidelity.com",
-    "advice@em.advisor.forbes.com",
-    "mail@eg.vrbo.com",
-    "info@joebiden.com",
-    "auto_reply@mailer.wexhealth.com",
-    "email@email-rcu.org",
-    "no-reply@coinbase.com",
-    "enews@email.reedssports.com",
-    "aaron@synergyrealestate.us",
-    "matthew.dassow@eastbay.com",
-    "raymonen@uwec.edu",
-    "jeffrey.sproul@rcu.org",
-    "adpfeedback@adp.com",
-    "noreply@xcelenergy.com",
-    "vanguardinvestments@vanguard.com",
-    "hello@kiwico.com",
-    "mailer@connect.match.com",
-    "edysender@bnymellon.com",
-    "do-not-reply@allegis-marketplace.com",
-    "ComputershareOnlineServices@cpucommunication.com",
-    "onlinebanking@ealerts.bankofamerica.com",
-    "donotreply@upwork.com",
-    "duluthtrading@duluthtradingemail.com",
-    "jeff.sproul@rcu.org",
-    "TimeAndExpense@allegisgroup.com",
-    "donotreply@upwork.com"
-  ],
-  "mark_read_senders": [
-    "dassowmd@gmail.com",
-    "venmo@venmo.com",
-    "support.allclearid@allclearid.com",
-    "willm2786@gmail.com"
-  ],
-  "exclude_senders": [
-    "djruplinger@gmail.com",
-    "dday@wausautax.com",
-    "willma@uwec.edu"
-  ]
+  "exclude_senders": [],
+  "trash_rules": {
+    "@otta.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@volumeone.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@inbox.kaymbu.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@kaymbu.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "team@mint.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@indeed.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@linkedin.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "newsletter@techcrunch.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "capitalone@notification.capitalone.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "kaggle.intercom-mail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "calendar-notification@google.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "vehiclediagnostics@onstar.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@spotify.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "subscriptions@subscriptions.usa.gov": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "email@et.npr.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "customerservice@emcom.bankofamerica.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ebanking@bankpeoples.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "matthew.dassow@footlocker.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "USPSInformedDelivery@usps.gov": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "theskimm.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "engagesupport@daxkoengage.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "americanexpress@member.americanexpress.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "discover@service.discover.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@gowild.wi.gov": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "citicards@info4.citi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "dave@ustvnow.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@covepointlodge.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "empowerhernet@gmail.com via mailchimpapp.net": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "goto@docker.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "HomeDepotCustomerCare@email.homedepot.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "mknowlan@aflag.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@alertsp.chase.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "citicards@info6.citi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:38:25.114212"
+    },
+    "wellsfargoretirementplans@retire1.wellsfargo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "wellsfargoretirementplans@retire2.wellsfargo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "news@onxmaps.today": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "Yahoo@communications.yahoo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@email.homedepot.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "Atlassian@eastbay.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "participant_services@eonline.e-vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "do-not-reply@stackoverflow.email": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "support@codewithmosh.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "support@github.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "partners@mail.outdoorlife.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ParticipantServices@vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "EDELIVERY@ivyinvestments.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@statuspage.io": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "hello@news.gemini.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "discover@card-e.em.discover.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "no-reply@updates.coinbase.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "billpay@billpay.bankofamerica.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "Chase@e.chase.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "Travel.Wisconsin@public.govdelivery.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "aws-marketing-email-replies@amazon.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@milwaukeetool.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "focusinfo@focusonenergy.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "account@nest.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@mailer.bitbucket.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "discover@e.discover.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@sports.yahoo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "myaccount@we-energies.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "web@cex.io": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ecards@123greetings.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@johnkasich.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@email.skype.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@email.kraken.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@atlassian.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "fitbit.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "email@messages.autotrader.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@datascience.smu.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "homedepotdecor@email.homedepot.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@docker.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "hello@talkpython.fm": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ambassador@anaconda.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "team@kaggle.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@lake-link.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "email@mail.onedrive.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@northernresort.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@dropboxmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@quantopian.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "paypal@mail.paypal.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@wisconsinpublicservice.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "connect@quandl.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@windscribe.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@twitter.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@messages.cargurus.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@namecheap.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@email.cbssports.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "wisconsinpublicservice@us.confirmit.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@mystubhub.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "AmericanExpress@welcome.aexp.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "help@walmart.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@mail.zillow.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@meetup.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@emails.chase.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@qemailserver.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@getipass.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "amazon-move@amazon.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@mymove.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "siriusxm": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@robinhood.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "stitcher": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "camelcamelcamel": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@email.ticketmaster.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@gdax.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "maillist.codeproject.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "cabelas@emails.cabelas.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "support@allclearid.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "upwork@e.upwork.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "@news.digitalocean.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "Participant_Education@eonline.e-vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "podcast@talkpython.fm": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "mailout@maillist.codeproject.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "editor@toptal.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "Kwikrewards@kwiktrip.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "digest-noreply@quora.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "RANWW@northwestmatrixmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "newsletter@news.farmandfleet.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "offers@your.offers.dominos.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "email@nl.npr.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "eTalk@bankpeoples.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@glassdoor.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "alert@indeed.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "surveys@google.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "micolika@uwec.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "alert@email4-beyond.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "venmo@venmo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "info@strikerbrands.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@email.meetup.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "gonefishing@thecoffeegrounds.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "auto-confirm@amazon.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "shipment-tracking@amazon.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "hello@gemini.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@upnorthnewswi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "member_services@rcu.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "matthew.dassow@mercmarine.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "friskyminsk@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@visiteauclaire.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ebay@ebay.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "discover@services.discover.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "homedepotreceipt@homedepot.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@accounts.google.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "coenlm@uwec.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "myaccount@spectrumemails.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "dccc@dccc.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "servicing@wheda.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "noreply@account.xcelenergy.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "the democratic national committee via mobilize": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no.reply.alerts@chase.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "support@sagepeople.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "fidelity.investments@mail.fidelity.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "advice@em.advisor.forbes.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "mail@eg.vrbo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@joebiden.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "auto_reply@mailer.wexhealth.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "email@email-rcu.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@coinbase.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "enews@email.reedssports.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "aaron@synergyrealestate.us": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "matthew.dassow@eastbay.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "raymonen@uwec.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "jeffrey.sproul@rcu.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "adpfeedback@adp.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@xcelenergy.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "vanguardinvestments@vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "hello@kiwico.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "mailer@connect.match.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "edysender@bnymellon.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "do-not-reply@allegis-marketplace.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ComputershareOnlineServices@cpucommunication.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "onlinebanking@ealerts.bankofamerica.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "donotreply@upwork.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "duluthtrading@duluthtradingemail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "jeff.sproul@rcu.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "TimeAndExpense@allegisgroup.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "alerts@notify.wellsfargo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "=?utf-8?q?ec_cty_democratic_party=27s_workspace?=": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ecdems@eauclairedemocrats.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "couillcd@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "fantasy-sports-no-reply@yahooinc.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "order-update@amazon.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "christinalorey@upnorthnewswi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "gitlab@mg.gitlab.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@okta.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "\"=?us-ascii?q?nebraska_game_and_parks?=\"": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@e.scheels.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "marketing@datakitchen.io": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "citbank@alerts.citbank.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "help@welcometothejungle.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "kirkbangstad@substack.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply.rsemail@mc2.adp.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "red@1105info.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@e.wisdems.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "carlene@fairmapswi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "sherman elementary via parentsquare": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "info@hansenauctiongroup.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "id@proxyvote.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "zerbej@uwec.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "support@fish-marketing.onxmaps.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@github.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "midwest dental eau claire south": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "customerservice@e.progressive.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "mail@mail2.wellsfargorewards.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "uptowntheaterinfo@eml.livenation.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "jitaliano@ecasd.us": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "sportsmansguide@email.sportsmansguide.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@reply.snowflake.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "notification@facebookmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@ecom1.logitech.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "reachus@news.gohunt.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@familyequality.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "samsung@innovations.samsungusa.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@rs.email.nextdoor.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "travel.wisconsin@mail.travelwisconsin.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "email.replies@mobilize.us": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "bcr@beavercreekreserve.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "fantasy-football@sports.comms.yahoo.net": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@neonemails.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "enews@fleetfarm.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@redditmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "nerdwallet@mail.nerdwallet.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "update@grafana.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "homedepot@order.homedepot.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "npolsfuss@teksystems.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "donotreply@email-libertymutual.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "mwolfe@wsgc.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@newegg.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "appel@fvtc.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "edward@saragossa.co.uk": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "schottem@uwec.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "odegaram@uwec.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "g3dprintingcontact@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "will.m.eckert@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "customerservice@email.progressive.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "sara.holtz@bankpeoples.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "chavez@ntc.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "do-not-reply@ntc.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "googleplay-noreply@google.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "customerservice@wps.ebillservice.net": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "careers@state.gov": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no-reply@dot.wi.gov": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "notifications@robinhood.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "yahoo@sports.comms.yahoo.net": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "idfishgame@public.govdelivery.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@kraken.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ebanking@psbwi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "careerresources@email4-beyond.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "alerts@citibank.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "partnerresources@email4-beyond.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "espnfantasy@fantasygames.go.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "customernotification@depositpoint.usbank.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "contact@e.match.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "newsletter@email4-beyond.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "fwill@wisconsinlifting.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply+40457@servicetitan.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "specials@papajohns-specials.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ourcustomers@email-libertymutual.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "aguerrero@dataminr.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "automated@airbnb.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "email@consumer.realtor.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "stockplanconnect@morganstanley.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreplymychart@hshs.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "participant_education@eonline.evanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@updates.taxslayer.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "fnbo@mail.fnbo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "oakleaf clinics mychart - do not reply": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "citicards@info15.citi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@ecasd.us": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "vanguardinvestments@transactional.vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "volunteers@eauclairedemocrats.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "eau claire area school district via parentsquare": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "vslive@1105info.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "ryan.wells.efev@statefarm.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "nytdirect@nytimes.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "jesso@datakitchen.io": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@mail.coinbase.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply.rsemail@adp.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@eyecarespecialtieswi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "mike@childrensmuseumec.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "bcr@beavercreekreserve.ccsend.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "prospectus_mbox@investordelivery.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@janetforjustice.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "notifications@openai1.discoursemail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "events_at_volumeone.org_dassowmd@duck.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "principal@e.principal.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@edelivery.ivyinvestments.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@gooutdoorsiowa.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "techmentor@1105info.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "=?utf-8?q?tammy=20baldwin=20press=20team?=": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "rewards@e-rewards.dominos.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "nebraskagameandparks@public.govdelivery.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "koppeska@uwec.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "team@vuemastery.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "vzr@1105info.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "contact@jitp.info": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "shine365@marshfieldclinic.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "dschulwolf@atscale.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "paypal@emails.paypal.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@email.cusa.canon.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "team@mail.clickup.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "info@lgbtmap.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "store-news@amazon.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "email@xcelenergy-emailnews.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "vbs@vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "support@marketing.onxmaps.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "vanguard@eonline.e-vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "service@paypal.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "schulferandassociates@lpl.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreplies@adprsportal.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "customerservice@thankyou.citi.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "hello@m.konghq.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@shop.app": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "listener@wpr.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "epaynoreply@usbank.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@wisconsin.gov": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "offers@gurneys.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "meetup-group-ec-winemeetup-list@meetup.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "system@deposco.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "noreply@gooutdoorsidaho.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "adpretirementservices_noreply@adp.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "no-reply@leetcode.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "swirlai@substack.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "marketing@influxdata.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "donotreply@e.citbank.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "developers@go.facebookmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "ads-account-noreply@google.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "fedex@message.fedex.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "noreply@email.apple.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "support@get-carrot.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "wi03dv.outreach@mail.house.gov": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "lenny@substack.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "vbs@transactional.vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "no-reply@us.greenhouse-mail.io": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "children's museum of eau claire": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "hello@e.wexbenefitsyou.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "cardholder@e.synchronyfinancial.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "adt@1105info.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "events@mail.stubhub.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "reply@rs.email.nextdoor.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "exclusive@e-exclusive.dominos.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "rakutennewsletter@emails.rakuten.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "noreply@basemap.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "donotreply@conduent.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "no-reply@mail.coinbase.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "megan buhrow via parentsquare": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "ecg@1105newsletters.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "replies@m.lastpass.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "noreply@email2.kraken.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "noreply@kaggle.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "retail_survey@feedback-vanguard.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "discover@airbnb.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "rcu@express.medallia.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "donate@wikimedia.org": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "=?utf-8?q?isabel_garc=c3=ada-ajofr=c3=adn_via_mobilize?=": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "no_reply@email.apple.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "att@message.att-mail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "jeremy@absolutelytaylormaid.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "info@gitlab.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "surveys@listen360.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "no-reply@email.kraken.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "max@stream.max.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "support@email.kraken.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "cloud-success@grafana.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "cloudteam@influxdata.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "early learning programs via parentsquare": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "contact@e.kamalaharris.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:38:42.919070"
+    },
+    "heyo@bemighty.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "alerts@transactional.vanguard.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "recruiting@mail.focusinsite.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "raybaysdonutco@gmail.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "donotreply@rxorder.walgreens.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "google-noreply@google.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "=?utf-8?b?sg9tzufkdmlzb3iglsbfyxugq2xhaxjl?=": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "angi@ce.angi.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "amanda@fairmapswi.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "community@photobucket.photolinking.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "homedepotcustomercare@mg.homedepot.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "drive-shares-dm-noreply@google.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "sara.goettl@sunbadger.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "gptzero@substack.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "martinwilliamp@gmail.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "no_reply@communications.paypal.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "\"9138-4529 qc inc. (spypoint)\"": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "alerts@vanguard.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "visionary@altoonaeyes.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "donotreply@citbank.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "store+32684802107@m.shopifyemail.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "donotreply@myicomfort.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "eccountydems@gmail.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "travel.wisconsin@hello.travelwisconsin.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "customersuccess@neonone.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "notifications@janeapp.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "surveys@qualitate.io": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "email@e.daveramsey.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "vr@1105info.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "talendteam@talend.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "microsoft account team": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "joe.goldberg@reply.snowflake.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "principal@sp.mail.principal.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "aws@1105info.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "chase@email.chase.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "ebay@reply5.ebay.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "orders@oe.target.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "no-reply@amazon.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "citi@info15.citi.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "confirmation@e-confirmation.dominos.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "offers@e-offers.dominos.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "express@airbnb.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "no-reply@geeksforgeeks.org": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "service@delawarefunds.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "securityservices_noreply@adp.com": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "booshl@uwec.edu": {
+      "added": "2026-01-16T06:43:39.188786",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:23:49.920034"
+    },
+    "account-update@amazon.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "josh.dassow@us.nestle.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "robot@craigslist.org": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "edelivery@waddell.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "myaccount@charteremails.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "support@tenantbackgroundsearch.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "jitp@reply.bronto.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "do-not-reply-support@lastpass.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "bestbuyinfo@emailinfo.bestbuy.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "kristin.ketterhagen@tlcvision.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "alisonrosecharles@gmail.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "family_focus_eye_care.sr@remindmemd.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "news-googleplay@google.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "brenda@teamtotrust.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "kohls@s.kohls.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "pkginfo@ups.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "update@emaildl.att-mail.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "guthrier@fvtc.edu": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "dailyshooter@e.camofire.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "remotedeposit@bankpeoples.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "dse_na2@docusign.net": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "vanguard@vanguard.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "contact@i.chemistry.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "kretz@fvtc.edu": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "support@getgov2go.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "homedepotpro@order.homedepot.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "coreyins2@tds.net": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "noreply-310b908d@plus.google.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "no-reply@cc.yahoo-inc.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "welisek@fvtc.edu": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "documents@rightsignature.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "orders@shopping.us.samsung.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "no-reply-aws@amazon.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "reply@mail.acculynx.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "gjhochstein@gmail.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "smccs@emailonline.chase.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "mailer-daemon@googlemail.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "day@fvtc.edu": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "mail@sf-notifications.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "no-reply@info.coinbase.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "paypal@e.paypal.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "donotreply@mohela.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "news@messages.cancer.org": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "studentfinance@fvtc.edu": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "doug@cvdevgroup.org": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "romason@teksystems.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "donotreply@finance.libertymutual.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "bevernmr6642@uwec.edu": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "donotreply@state.gov": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "awbomber@gmail.com": {
+      "added": "2026-01-16T06:54:09.207152",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    },
+    "notifications@tasks.clickup.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "customer.service@mail.synchronybank.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "press@press.tammybaldwin.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "noreply@kivuto.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "mike-childrensmuseumec.com@shared1.ccsend.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "statements@mail.synchronybank.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "change_at_e.change.org_dassowmd@duck.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "gopaperless@mohela.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "saver@capitalone360.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "alerts@ziprecruiter.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "xvz2k-5154828974@hous.craigslist.org": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "melissa@burstadinsurance.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "dbartow@teksystems.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "dominos@confirmation.dominos.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "dse@docusign.net": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "noreply@skyslope.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "noreply@orders.culvers.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "update+f6zifgpe@facebookmail.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "lauren.a.oliveri@gmail.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "noreply@insideicloud.icloud.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "foote@fvtc.edu": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "customercare@gotowebinar.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "gruetzmacher@ntc.edu": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "noreply@r.groupon.com": {
+      "added": "2026-01-16T08:18:45.634775",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:18:54.156663"
+    },
+    "notification@alert.principal.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "no-reply@zoom.us": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "security@mail.instagram.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "noreply@clickup.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "jlralph7@gmail.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "bankofamerica@loyaltycard.bankofamerica.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "7152976341@pics.cellcom.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "email@paragonmessaging.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "customercare@cpooutlets.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "cpooutlets@emails.cpooutlets.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "google-maps-noreply@google.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "tkoenig@c21affiliated.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "notifications@e-notifications.myuhc.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "custservnotices@sportsmansguide.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "noreply@accounts.logi.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "claysj@uwec.edu": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "service@spypoint.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "fnbo@notify.fnbo.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "support@support.taxslayer.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "mysupport@credentialssolutions.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "bdgrland@yahoo.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "menards@menard-inc.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "msuesse@varde.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "invoice+statements+acct_1e8b1ziyhljmbxek@stripe.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "rewards@reward.tremendous.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "noreply-4783d872@plus.google.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "smarcott00@gmail.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "reply-275673@enews.meritline.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "anna.tennessen@gmail.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "registrar@fvtc.edu": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "donotreply@ntc.edu": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "wsmith@eastbay.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "security@facebookmail.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "cday@wausautax.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "libertymutualrighttrack@octotelematics.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "service@symless.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "support@cex.io": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "noreply@amazon.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "order@farmandfleet.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "return@amazon.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "messages+9b2b2a877a14192cb484@mobilize.us": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "shipping_notification@orders.apple.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "updates@ce.homeadvisor.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "noreplies@retirement.adprsportal.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "info@scepaniakevents.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "donotreply@reference.skillsurvey.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "sales@rushordertees.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "participantservices@transactional.vanguard.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "do-not-reply@myschoolbucks.com": {
+      "added": "2026-01-16T08:32:49.276833",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "member@surveymonkeyuser.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "eauclaireparksrecreationandforestry@active.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "donotreply@email.homesite.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "donotreply@cit.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "giving@foundation.uwec.edu": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "yahoo@newsletters.yahoo.net": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "do-not-reply@notifications.seesaw.me": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "info@signupgenius.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "fantasy-baseball@sports.comms.yahoo.net": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "clientsuccess@neonone.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "noreply@service.paypal.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "no-reply@cc.yahoo.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "invoice+statements@mail.anthropic.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "mondorjb@uwec.edu": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "visualanalysis@data.tableau.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "info@880cities.org": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "no-reply@toppers.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "marriott@express.medallia.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "donotreply@absencemgmt.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "contact@randynewberg.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "ourcustomers@customers.libertymutual.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "mcp@1105info.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "robinhood@proxydocs.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "rmg@1105newsletters.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "googlenest@nest.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "opportunities@careeralerts.teksystems.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "info@emails.glocomms.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "paula@wisdems.org": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "donotreply@email.apple.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "customer-notifications@ups.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "no-reply@dtmail.dispatchtrack.io": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "newsletters@em.walmart.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "info@cb.mail.coinbase.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "cbergh@datakitchen.io": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "do_not_reply@on24event.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "thankyourewards@thankyou.citi.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "googlebase-noreply@google.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "sa.noreply@samsung-mail.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "account-update@symless.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "olmn@ndr.mysecurebill.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "community@photobucket.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "citi@info6.citi.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "samsung@info.samsungusa.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "applearcade@insideapple.apple.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "support@help.instapaper.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "no-reply@ecampaigns.dell.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "noreply@cvdevgroup.org": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "community@m.konghq.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "donotreply@eyemed.com": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "samsung-rt1@samsunggalaxy.email": {
+      "added": "2026-01-16T08:40:29.228574",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:40:34.796529"
+    },
+    "roxana.nunez@harvestright.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "otteaj@gmail.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "noreply@epymtservice.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "no-reply@news.spotifymail.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "smrfs@emailonline.chase.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "citicards@info.citibank.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "erec.admin@greenheck.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "jobsearchguide@email4-beyond.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "gerkecor@fvtc.edu": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "cengagebrain.support@cengage.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "saver@email.capitalone360.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "wetzel@fvtc.edu": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "messages@gofundme.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "alerts@email.realtor.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "rocky.thrall@mercmarine.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "heather.schulz@bankpeoples.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "gruetzmacherr@ntc.edu": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "indidogwalker@gmail.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "support@kraken.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "righttrack@email-libertymutual.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "kristine@maccos.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "your_order_us@orders.apple.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "dwmoore@ohiopurewaterco.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "message@adobe.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "newsletter@cvdevgroup.org": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "rs-plan-admin@adp.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "email@e.ramseysolutions.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "mdassow@dataminr.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "niehofmr5492@uwec.edu": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "dassowmd+gmail@neonemails.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "order@orders.menards.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "bluekm@uwec.edu": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "bookings@kennelbooker.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "ereceipt@fleetfarm.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "katherine@qualitate.io": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "no-reply@dropbox.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "chase@emailinfo.chase.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "mcgeecon@gmail.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "nvs333@gmail.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "kaitlyncooper@gmail.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "visacustomerservice@cabelas.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "licenses@idfg.idaho.gov": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "brickner@fvtc.edu": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "jobmatch@email4-beyond.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "rohmd@fvtc.edu": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "customerservice@wisconsinpublicservice.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "lynx4ben@gmail.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "espnnewsletters@espnmail.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "kohls@t.kohls.com": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-17T09:16:36.381704"
+    },
+    "noreply@cex.io": {
+      "added": "2026-01-16T08:49:18.081799",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:49:25.413061"
+    },
+    "heather.okab@lovelytics.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "no-reply@slack.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "alumni@foundation.uwec.edu": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "info@valleysports.academy": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "feedback@spectrumcustomersurvey.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "hgv@travel.hiltongrandvacations.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "search-noreply@google.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "vanguardinvestments@e-vanguard.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "noreply@neonsso.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "team@connect.sparkmailapp.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "newsletter@notifications.lumosity.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "fantasy-basketball@sports.comms.yahoo.net": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "posts-recap@mail.instagram.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "millert@ntc.edu": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "info@m.sitkagear.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "email@menard.messages1.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "families-noreply@google.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "knorbert@empowerhernetwork.org": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "support@toggl.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "noreply@quora.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "noreply@aspiraconnect.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "customerservice@bankpeoples.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "donotreply@bankmessage.capitalone.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "learn@mc.wisconsin.edu": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "noreply@developers.facebook.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "frcec@frcec.org": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "service@t.amica.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "libertymutualservice@surveys.libertymutual.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "messages+2d5d20ea97e2b4c87c70@mobilize.us": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "misora.enslein@2020victory.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "homedepotpro@email.homedepot.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "acerewards@ne.acehardware.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "geappliances@info.geappliances.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "photos@onedrive.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "googleads-noreply@google.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "no-reply@em.gemini.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "noreply@book.angi.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "help@book.angi.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "messages@meetup.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "hello@holloway.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "project@recruitmentforresearch.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "no-reply@comm.spypoint.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "customersupport@mynaturebookadventures.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "noreply@qsurvey.bankofamerica.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "support@rapidapi.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "ed.gov@public.govdelivery.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "homfurniture@homfurniture.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "walmartcustomerexperience@express10.medallia.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "noreply@email.openai.com": {
+      "added": "2026-01-16T08:51:14.887875",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T08:51:20.151274"
+    },
+    "community@e.teksystems.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "ebell@teksystems.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "hom-sales@homfurniture.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "cynthia@amundsonsappliance.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "customerserviceftc@sportsmansguide.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "noreply@hireright.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "support@key.me": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "store+4376199286@t.shopifyemail.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "website@symless.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "order@champion.cgcpos.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "kpearson11@cvtc.edu": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "support@neonone.zendesk.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "hello@marketing.gofundme.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "capitalone@email.capitalone.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "debbie.dahlke@marathonelectric.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "nortonbt@gmail.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "talent_acquisition@uhg.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "sandy@marcellinsurance.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "email@mail2.tlcv.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "homeloandirect@email.chase.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "news@insideapple.apple.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "jesse.toppins@gmail.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "resumerequest@email4-beyond.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "joe@gladiatorassault.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "navionics@navionics.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "ebay@reply1.ebay.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "dinsm@firstweber.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "mcinfo@ups.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "events@letsgobowl.org": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "membermail@wpr.org": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "no-reply@hire.lever.co": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "msonlineservicesteam@microsoftonline.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "michael.grabarczyk@kohls.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "shelli.ellis@wellsfargo.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "schhotray@striveconsulting.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "donotreply@homfurniture.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "dassow.matthew@principal.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "michael.reitz@searchleaders.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "frigginglorious@gmail.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "recruiting+247932975@applytojob.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "mel@thrivepcs.net": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "donotreply@epicmychart.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "no-reply@village.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "fantasy-plus@sports.comms.yahoo.net": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "info_at_e.nosurrenderusa.com_last-banker-sullen@duck.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "terry_at_e.terryfortexas.email_last-banker-sullen@duck.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "no-reply@email.claude.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "eaccount@forwardbank.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "digital-no-reply@amazon.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    },
+    "ezines@arcamax.com": {
+      "added": "2026-01-18T16:23:25.917618",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-18T16:23:36.404302"
+    }
+  },
+  "mark_read_rules": {
+    "dassowmd@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "venmo@venmo.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "support.allclearid@allclearid.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "willm2786@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "sagar@qualitate.io": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "djruplinger@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "kldassow@gmail.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "dean.ruplinger@greenheck.com": {
+      "added": "2026-01-16T06:47:30.715713",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:48:19.775233"
+    },
+    "dday@wausautax.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "willma@uwec.edu": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "kathybrewer@tds.net": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "jini.dassow@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "phorecki@gmail.com": {
+      "added": "2026-01-16T06:30:28.288978",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "bmanakhimov@dataminr.com": {
+      "added": "2026-01-16T06:51:16.004750",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": null
+    },
+    "dan@cvdevgroup.org": {
+      "added": "2026-01-16T06:51:16.004750",
+      "last_ran": "2026-01-18T16:23:36.404302",
+      "last_hit": "2026-01-16T06:54:23.372900"
+    }
+  },
+  "trash_senders": {
+    "alerts@vanguard.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "account-update@amazon.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "josh.dassow@us.nestle.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "robot@craigslist.org": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "edelivery@waddell.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "myaccount@charteremails.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "no-reply@amazon.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "support@tenantbackgroundsearch.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "jitp@reply.bronto.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "do-not-reply-support@lastpass.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "bestbuyinfo@emailinfo.bestbuy.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "kristin.ketterhagen@tlcvision.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "alisonrosecharles@gmail.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "express@airbnb.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "store+32684802107@m.shopifyemail.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "family_focus_eye_care.sr@remindmemd.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "securityservices_noreply@adp.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "news-googleplay@google.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "brenda@teamtotrust.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "kohls@s.kohls.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "pkginfo@ups.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "update@emaildl.att-mail.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "donotreply@citbank.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "guthrier@fvtc.edu": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "dailyshooter@e.camofire.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "remotedeposit@bankpeoples.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "dse_na2@docusign.net": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "booshl@uwec.edu": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "vanguard@vanguard.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "contact@i.chemistry.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "kretz@fvtc.edu": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "support@getgov2go.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    },
+    "donotreply@rxorder.walgreens.com": {
+      "added": "2026-01-16T06:33:09.337882",
+      "last_ran": null,
+      "last_hit": null
+    }
+  },
+  "exclude_keywords": []
 }
